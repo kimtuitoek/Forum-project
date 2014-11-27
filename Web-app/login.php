@@ -48,6 +48,7 @@
 		// Retrieve the user data from the database.  If $row is false, then the username 
 		// they entered is not registered. 
 		$row = $stmt->fetch(); 
+		
 		if($row) 
 		{ 
 			// Using the password submitted by the user and the salt stored in the database, 

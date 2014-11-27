@@ -12,7 +12,7 @@
     $stmt = $db->prepare($query); 
     $stmt->execute();
   } 
-
+  
   catch(PDOException $ex) 
   { 
     die("Failed to run query: " . $ex->getMessage()); 
@@ -82,12 +82,63 @@
           <div class="margin">
           <!-- CONTENT -->
             <section class="s-12 l-9 right">
-              <h1>Home</h1>
+              <h1>Threads</h1>
                   <div class="margin">
+                    <table class="responstable">
+  
+  <tr>
+    <th>Name</th>
+    <th><span>Number of posts</span></th>
+    <th>Views</th>
+    <th>Date of creation</th>
+    <th>Owner</th>
+  </tr>
+  
+  <?php
+  foreach ($rows as $row) { ?>
+  <tr>
+    <td><a href="posts.php?id=<?php echo($row['Thread_id'])?>"> <?php echo($row['Name']); ?> </a></td>
+    <td> <?php echo($row['Post_count']); ?> </td>
+    <td> <?php echo($row['Views']); ?> </td>
+    <td> <?php echo($row['Date']); ?> </td>
+    <td> <?php echo($row['Username']); ?> </td>
+  </tr>
+  <?php  }?>
+  
+</table>
                   </div>
             </section>
             <!-- ASIDE NAV -->
-           
+            <aside class="s-12 l-3">
+              <h3>Filters</h3>
+              <div class="aside-nav">
+                <ul>
+                  <li><a>Options</a></li>
+                  <li><a>Filters</a>
+                    <ul>
+                      <li><a>Filter 1</a></li>
+                      <li><a>Filter 2</a></li>
+                      <li><a>Filter 3</a>
+                        <ul>
+                          <li><a>Filter 3-1</a></li>
+                          <li><a>Filter 3-2</a></li>
+                          <li><a>Filter 3-3</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a>Publishers</a>
+                    <ul>
+                      <li><a>About</a></li>
+                      <li><a>Location</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </div>  
+      </div>
       <!-- FOOTER -->
       <footer class="line">
         <div class="s-12 l-6">

@@ -3,26 +3,31 @@
   // First we execute our common code to connection to the database and start the session 
   require("common.php");
   
+  if(!empty($_GET))
+  {
   //Query to select threads and topics
-  $query = "SELECT * FROM Topic as t0 JOIN Thread as t1 on t0.Topic_id = t1.Topic_id JOIN User as u on t1.User_id = u.User_id";
+  $query = "SELECT * FROM Post as p JOIN User as u on p.User_id = u.User_id Where Thread_id = :thread_id";
+
+  $query_params = array( 
+      ':thread_id' => $_GET['id']);
 
   try 
   { 
     // Execute the query against the database 
     $stmt = $db->prepare($query); 
-    $stmt->execute();
+    $result = $stmt->execute($query_params);  
   } 
-
   catch(PDOException $ex) 
   { 
     die("Failed to run query: " . $ex->getMessage()); 
   } 
 
   $rows = $stmt->fetchAll();
+  }
 
 ?>
-  
-  <!DOCTYPE html>
+
+<!DOCTYPE html>
   <head>
   <meta http-equiv="content-type" content="text/html; charset=windows-1250">
   <meta name="viewport" content="width=device-width" />
@@ -80,15 +85,22 @@
       <div class="line">
         <div class="box">
           <div class="margin">
-          <!-- CONTENT -->
+            <!-- CONTENT -->
             <section class="s-12 l-9 right">
-              <h1>Home</h1>
-                  <div class="margin">
-                  </div>
+              <?php foreach ($rows as $row) {?>
+                <table class="responstable">
+                  <tr>
+                    <th >User: <?php echo($row['Username']);?> </th>
+                  </tr>
+                  
+                  <tr> <td><?php echo($row['Body'] ."\t"); ?> </td></tr>
+                </table> 
+                <br/><br/>  
+               <?php }?>
+             </div>
             </section>
-            <!-- ASIDE NAV -->
-           
-      <!-- FOOTER -->
+
+            <!-- FOOTER -->
       <footer class="line">
         <div class="s-12 l-6">
           <p>© 2013 Responsee, All Rights Reserved</p>
