@@ -2,26 +2,46 @@
 
   // First we execute our common code to connection to the database and start the session 
   require("common.php");
-  
-  //Query to select threads and topics
-  $query = "SELECT * FROM Thread as t1 JOIN User as u on t1.User_id = u.User_id";
 
-  try 
+  if(!empty($_POST))
+  {
+
+
+  	//Query to select threads and topics
+  	$query = "INSERT INTO Thread ( 
+				User_id,
+				Name,
+        Date,
+        Object_id
+			) VALUES ( 
+				:User_id,
+				:Name,
+        NOW(),
+        :Object_id	
+				)"; 
+
+  	$query_params = array( 
+      ':User_id' => $_SESSION['user']['User_id'],
+      ':Name' => $_POST['thread_name'],
+      'Object_id' => sha1($_POST['thread_name']));
+
+  	try 
   { 
     // Execute the query against the database 
     $stmt = $db->prepare($query); 
-    $stmt->execute();
+    $result = $stmt->execute($query_params);  
   } 
-  
   catch(PDOException $ex) 
   { 
     die("Failed to run query: " . $ex->getMessage()); 
   } 
 
-  $rows = $stmt->fetchAll();
+  header("Location: threads.php");
+  die("Redirecting to: threads.php");
+  }
 
-?>
-  
+  ?>
+
   <!DOCTYPE html>
   <head>
   <meta http-equiv="content-type" content="text/html; charset=windows-1250">
@@ -84,30 +104,13 @@
             <section class="s-12 l-9 right">
               <h1>Threads</h1>
                   <div class="margin">
-                    <table class="responstable">
-  
-  <tr>
-    <th>Name</th>
-    <th><span>Number of posts</span></th>
-    <th>Views</th>
-    <th>Date of creation</th>
-    <th>Owner</th>
-  </tr>
-  
-  <?php
-  foreach ($rows as $row) { ?>
-  <tr>
-    <td><a href="posts.php?id=<?php echo($row['Thread_id'])?>"> <?php echo $row['Name']; ?> </a></td>
-    <td> <?php echo $row['Post_count']; ?> </td>
-    <td> <?php echo $row['Views']; ?> </td>
-    <td> <?php echo $row['Date']; ?> </td>
-    <td> <?php echo $row['Username']; ?> </td>
-  </tr>
-  <?php  }?>
-  
-</table>
-        <!--New thread button-->
-        <a href="newthread.php">New thread</a>
+                    
+        <!--Add new thread-->
+        <form action="newthread.php" method="post" class="customform s-12 l-8">
+          <p>Create new thread:</p>
+               <div>Name: <input type="textbox" name="thread_name" value=""></div>
+               <div class="s-9" ><button type="submit">Create</button></div>
+        </form>
 
            </div>
             </section>

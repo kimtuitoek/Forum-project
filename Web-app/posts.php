@@ -3,6 +3,9 @@
   // First we execute our common code to connection to the database and start the session 
   require("common.php");
   
+  //Store previoue page location incase of new post
+  $_SESSION['previous_page'] = $_SERVER['PHP_SELF']."?id=".$_GET['id'];
+
   if(!empty($_GET))
   {
   //Query to select threads and topics
@@ -97,6 +100,15 @@
                 </table> 
                 <br/><br/>  
                <?php }?>
+
+              <!--Add new post-->
+               <form action="newpost.php" method="post" class="customform s-12 l-8">
+               <p>New Post:</p>
+               <textarea name="text_post"style="width: 808px; height: 121px;"></textarea>
+               <input type="hidden" name="thread_id" value="<?php echo($_GET['id']);?>">
+               <div class="s-9" ><button type="submit">Post</button></div>
+             </form>
+
              </div>
             </section>
 
