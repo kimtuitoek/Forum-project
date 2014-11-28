@@ -20,10 +20,12 @@
         :Object_id	
 				)"; 
 
+    $Object_id = sha1($_POST['thread_name']);
+    
   	$query_params = array( 
       ':User_id' => $_SESSION['user']['User_id'],
       ':Name' => $_POST['thread_name'],
-      'Object_id' => sha1($_POST['thread_name']));
+      'Object_id' => $Object_id);
 
   	try 
   { 
@@ -36,8 +38,8 @@
     die("Failed to run query: " . $ex->getMessage()); 
   } 
 
-  header("Location: threads.php");
-  die("Redirecting to: threads.php");
+  header("Location: posts.php?id=&obj=".$Object_id);
+  die("Redirecting to: posts.php?id=&obj=".$Object_id);
   }
 
   ?>

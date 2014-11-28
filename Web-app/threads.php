@@ -97,7 +97,7 @@
   <?php
   foreach ($rows as $row) { ?>
   <tr>
-    <td><a href="posts.php?id=<?php echo($row['Thread_id'])?>"> <?php echo $row['Name']; ?> </a></td>
+    <td><a href="posts.php?id=<?php echo($row['Thread_id'])?>&obj=<?php echo($row['Object_id'])?>"> <?php echo $row['Name']; ?> </a></td>
     <td> <?php echo $row['Post_count']; ?> </td>
     <td> <?php echo $row['Views']; ?> </td>
     <td> <?php echo $row['Date']; ?> </td>

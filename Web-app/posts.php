@@ -4,15 +4,16 @@
   require("common.php");
   
   //Store previoue page location incase of new post
-  $_SESSION['previous_page'] = $_SERVER['PHP_SELF']."?id=".$_GET['id'];
+  $_SESSION['previous_page'] = $_SERVER['PHP_SELF']."?id=".$_GET['id']."&obj=".$_GET['obj'];
 
   if(!empty($_GET))
   {
   //Query to select threads and topics
-  $query = "SELECT * FROM Post as p JOIN User as u on p.User_id = u.User_id Where Thread_id = :thread_id";
+  $query = "SELECT * FROM Post as p JOIN User as u on p.User_id = u.User_id JOIN Thread as t on t.Thread_id = p.Thread_id Where t.Thread_id = :thread_id or t.Object_id = :obj";
 
   $query_params = array( 
-      ':thread_id' => $_GET['id']);
+      ':thread_id' => $_GET['id'],
+      ':obj' => $_GET['obj']);
 
   try 
   { 
