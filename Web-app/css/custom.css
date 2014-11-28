@@ -1,0 +1,595 @@
+ /*Login screen border*/
+
+ .customBorder {
+
+border:2px solid #a1a1a1;
+
+padding:70px 20px; 
+
+background:#dddddd;
+
+width:400px;
+
+border-radius:25px;
+
+margin-left:auto;
+
+margin-right:auto;
+
+margin-top:10%;
+
+}
+
+
+
+/*Deals with the top area*/
+
+#top_navi > ul {
+
+  float: right;
+
+  max-height: 100%;
+
+}
+
+
+
+#top_navi a{
+
+  color: #1E1E1E;
+
+}
+
+
+
+#welcome a:hover{
+
+  background: none;
+
+  cursor:default;
+
+}
+
+
+
+#top_background {
+
+  background: #262626;
+
+}
+
+
+/*Deals with error messages*/
+
+.loginError{
+
+color: #FF3300!important;
+
+float: left;
+
+position: relative;
+
+}
+
+
+
+.signupError{
+
+color: #FF3300!important;
+
+}
+
+
+
+/*Supposed to deal with fixed positioning of elements(bad idea!)
+
+#page-wrap {
+
+  width:220px;
+
+  margin: auto; 
+
+  position: fixed; 
+
+}
+
+*/
+
+
+
+/*Deals with images*/
+
+#custom_1 img{
+
+  height: auto;
+
+  width: auto;
+
+}
+
+
+
+#custom_2 img{
+
+  max-height: 250px;
+
+  width: 20%;
+
+  position: relative; 
+
+  left: 40%;
+
+}
+
+
+
+#custom_home img{
+
+  max-height: 260px;
+
+  width: 85%;
+
+}
+
+
+
+#custom_subscribe img{
+
+  max-height: 360px;
+
+  width: 95%;
+
+  border:1px solid #021a40;
+
+}
+
+
+
+#custom_home:hover .cart_hover{
+
+  display: inline;
+
+}
+
+
+
+#custom_store img{
+
+  max-height: 200px;
+
+  height: 100%;
+
+  width: 75%;
+
+  float:none;
+
+  border:1px solid #021a40;
+
+}
+
+
+
+#custom_store:hover .cart_hover{
+
+  display: inline;
+
+}
+
+
+
+#custom_store_name{
+
+background-color:  #F6F6F6;
+
+white-space: nowrap; 
+
+overflow: hidden;
+
+}
+
+
+
+
+
+/*Deals with the size of the magazine image scroll on the home screen*/
+
+#custom_box {
+
+  background: none repeat scroll 0 0 #fff;
+
+  display: block;
+
+  padding: 0.25em 2.00em 4.25em 0em;
+
+  width: 100%;
+
+}
+
+
+
+/*Deals with buttons*/
+
+#custombutton_1 button{
+
+  background: none repeat scroll 0 0 #444444;
+
+  border: medium none;
+
+  color: #FFFFFF;
+
+  cursor: pointer;
+
+  display: block;
+
+  font-size: 0.8em;
+
+  height: 32px;
+
+  margin: 0.75em 0;
+
+  padding: 0 0.625em;
+
+  white-space: nowrap;
+
+  width: 100%;
+
+ 
+
+}
+
+#custombutton_1:hover button{
+
+  background: #777;
+
+}
+
+
+
+/*Deals with the cart images*/
+
+#custom_cart img{
+
+  height: 35px;
+
+  width: 35px;
+
+  float: left;
+
+  position: relative; 
+
+  top: -7px;
+
+  overflow: auto;
+
+}
+
+#custom_cart{
+  
+}
+
+#subscribed img{
+
+  height: 30px;
+
+  width: 30px;
+
+  float: left;
+
+  position: relative; 
+
+  top: -8px;
+
+  overflow: auto;
+
+  border: none;
+
+}
+
+
+
+#custom_cart2 img{
+
+  max-height: 100px;
+
+  width: 50%;
+
+  float: left;
+
+  border:1px solid #021a40;
+}
+
+#custom_cart2{
+
+  width: 30%;
+
+  padding: 0,1;
+
+}
+
+
+
+img#custom_cart_store{
+
+  height: 45px;
+
+  width: 45px;
+
+  position: relative;
+
+  top: -14px;
+
+  border: none;
+
+}
+
+.cart_hover{
+
+  display: none;
+
+}
+
+#custom_cart2:hover .cart_hover{
+
+  display:block;
+
+}
+
+
+
+#custom_cart3{
+
+  height: 35px;
+
+  width: 35px;
+
+  float: left;
+
+  position: relative; 
+
+  top: -7px;
+
+  overflow: auto;
+
+}
+
+.custom_cart_checkout img{
+
+  height: 45px;
+
+  width: 45px;
+
+  overflow: auto;
+
+}
+#custom_cart_header {
+
+  position: relative; 
+
+  right: 0.2em;
+
+  float: left;
+
+}
+
+
+#custom_cart_subscribe{
+
+   height: 35px;
+
+    width: 35px;
+
+  float: right;
+
+}
+
+
+
+#cart_text{
+
+  color:#262626;
+
+}
+
+
+
+#remove{
+
+ 
+
+}
+
+#table_subscriptions{
+
+ width:100%;
+
+}
+
+
+
+/*Deals with text area in the cancel account page*/
+
+textarea#cancel_account{
+
+   resize: none;
+
+   max-height: 120px;
+
+   height: 100px;
+
+   width: 100%;
+
+}
+
+
+
+/*Deals with my_subsciption table*/
+
+table#table_subscriptions tr{
+
+padding:10px 40px; 
+
+width:100%;
+
+resize:both;
+
+overflow:auto;
+
+}
+
+
+
+#custom_subscriptions img{
+
+  max-height: 100px;
+
+  width: 50%;
+
+  float: left;
+  border:1px solid #021a40;
+
+}
+
+#custom_subscriptions{
+
+  width: 20%;
+
+  padding: 0,1;
+
+}
+
+#custom_subscriptions :hover .cart_hover{
+
+  display:block;
+
+}
+
+
+
+/*Modified <a>*/
+
+#modified_a_link a, a:link, a:visited, a:hover, a:active {
+
+  text-decoration: none;
+
+  color: #0099FF;
+
+  }
+
+
+
+/*Custom search*/
+
+
+
+#custom_search{
+
+  position: relative; 
+
+  left: -39px;
+
+  padding: 0;
+
+}
+
+
+
+#custom_search img{
+
+  height: 100%;
+
+  width: 22%;
+
+  max-height: 85px;
+
+  float: left;
+
+  position: relative; 
+
+  top: 1px;
+
+  overflow: auto;
+
+  border:1px solid #021a40;
+
+}
+
+
+
+#custom_search .subscribed img{
+
+  height: 30px;
+
+  width: 30px;
+
+  float: left;
+
+  position: relative; 
+
+  top: -8px;
+
+  overflow: auto;
+
+  border: none;
+
+}
+
+
+
+#custom_search .name{
+
+background-color:  #F6F6F6;
+
+white-space: nowrap; 
+
+overflow: hidden;
+
+}
+
+
+
+.results{
+
+  display: block;
+
+  border-width: 0px;
+
+  border-style: solid;
+
+  border-color: #cbcfe2 #c8cee7 #c4c7d7;
+  position: absolute;
+  background: #FFFFFF;
+  z-index: 2;
+  width: 100%;
+
+}
+
+.results li { 
+
+  display: block;
+
+  width: 115%;
+
+}
+
+
+
+.results li:hover { 
+
+  background-color:  #F6F6F6;
+}
+
+
+
+.results li:last-child{ 
+
+  margin-bottom: -2px 
+
+}
+
+
+
+#custom_search .custom_list p{
+
+  color:#262626;
+
+}
