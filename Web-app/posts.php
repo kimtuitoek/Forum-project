@@ -46,6 +46,12 @@
                   </tr>
                   
                   <tr> <td><?php echo($row['Body'] ."\t"); ?> </td></tr>
+
+                  <tr> <td><?php if($row['User_id'] == $_SESSION['user']['User_id']) { ?>
+                    <a href="edit-post.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>">Edit</a>
+                      </td>
+                  <?php } ?>
+                  </tr>
                 </table> 
                 <br/><br/>  
                <?php }?>

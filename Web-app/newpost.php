@@ -10,11 +10,13 @@
   	$query = "INSERT INTO Post ( 
 				Body,
 				User_id,
-				Thread_id
+				Thread_id,
+				Date
 			) VALUES ( 
 				:Body,
 				:User_id,
-				:Thread_id		
+				:Thread_id,
+				NOW()		
 				)"; 
 
   	$query_params = array( 
