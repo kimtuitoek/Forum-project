@@ -34,7 +34,7 @@
         {
           ?>
           <li id="welcome"><a>Welcome, <?php echo htmlentities($_SESSION['user']['First_name'], ENT_QUOTES, 'UTF-8')?></a></li>
-          <li><a href='settingspage.php'>MyAccount</a></li>
+          <li><a href='settings.php'>MyAccount</a></li>
           <li><a href='logout.php'>Logout</a></li>
         <?php }?>
         </ul>
