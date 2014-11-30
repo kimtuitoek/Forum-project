@@ -35,7 +35,7 @@
   
   <tr>
     <th>Name</th>
-    <th><span>Number of posts</span></th>
+    <th>Number of posts</th>
     <th>Views</th>
     <th>Date of creation</th>
     <th>Owner</th>
@@ -45,8 +45,8 @@
   <?php
   foreach ($rows as $row) { ?>
   <tr>
-    <td><a href="posts.php?id=<?php echo($row['Thread_id'])?>&obj=<?php echo($row['Object_id'])?>">
-        <?php echo $row['Name']; echo "(".$row['Type'].")"?> </a></td>
+    <td><a href="posts.php?id=<?php echo($row['Thread_id'])?>&obj=<?php echo($row['Object_id'])?>&views=<?php echo($row['Views'])?>">
+        <?php echo $row['Name']." (".$row['Type'].")";?> </a></td>
     <td> <?php echo $row['Post_count']; ?></td>
     <td> <?php echo $row['Views']; ?> </td>
     <td> <?php echo $row['Date']; ?> </td>

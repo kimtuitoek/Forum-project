@@ -27,6 +27,22 @@
   } 
 
   $rows = $stmt->fetchAll();
+  
+  //Update views count
+  $query2 = "UPDATE Thread SET Views = :views WHERE Thread_id = :t_id";
+  $query_params2 = array(':t_id' => $_GET['id'], ':views' => $_GET['views'] + 1);
+
+   try 
+  { 
+    // Execute the query against the database 
+    $stmt = $db->prepare($query2); 
+    $result = $stmt->execute($query_params2);  
+  } 
+  catch(PDOException $ex) 
+  { 
+    die("Failed to run query: " . $ex->getMessage()); 
+  } 
+
   }
 
    include("header.php");
