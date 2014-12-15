@@ -18,7 +18,7 @@
 			// like this.  It is much better to display the error with the form 
 			// and allow the user to correct their mistake.  However, that is an 
 			// exercise for you to implement yourself.
-			
+							
 			// Toss: Should totally figure out how to do this...
 			$error['password'] = "Please enter a password";
 			$validation_passed = False;
@@ -78,34 +78,36 @@
 	}	
 
 		
-	include("header.php") 
+  include_once("templates/header.php"); 
 ?> 
 
-
-
-	<div class="customBorder" "s-12 l-8 right">
-	<fieldset>
-		<h1>Password Edit</h1> 
-		<form action="PasswordEdit.php" method="post" class="customform s-12 l-8"> 
-			<div class="PasswordError"><?php echo $error['message'] ."<br/>"; ?></div>
+	<!-- ASIDE NAV AND CONTENT -->
+	<div class="line">
+		<div class="box margin-bottom">
+			<div class="margin">
+				<article class="customform s-12 l-8">
+						<h1>Change Password</h1> 
+						<form action="PasswordEdit.php" method="post"> 
+							<div class="PasswordError"><?php if (isset($error['message'])) {echo $error['message'];} ?></div>
 				
 			
-				<div class="s-9"> <span class="PasswordError"><?php echo $error['icon']; ?></span>
-				New Password:<span class="signupError"><?php echo $error['password']; ?></span>
-					<input type="password"  name="password" value="" /></div>
-			
-				<div class="s-9">
-				Confirm Password:<span class="PasswordError"><?php echo $error['confirm']; ?></span>
-					<input type="password"  name="confirm_password" value="" /></div>
+							<div> <span class="PasswordError"><?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
+								New Password<span class="signupError"><?php if (isset($error['password'])) {echo $error['password'];} ?></span>
+									<input type="password"  name="password" value="" /></div>
+					
+							<div>
+							Confirm Password<span class="PasswordError"><?php if (isset($error['confirm'])) {echo $error['confirm'];} ?></span>
+							<input type="password"  name="confirm_password" value="" /></div><br/>
 				
-			<div class="s-9" ><button type="submit">Change</button></div>
-
-		</form> 
-	<a href="../accountsettings.php" class="s-9" >Cancel</a>
-	</fieldset>
+							<div><button type="submit" class="s-3" style="margin-right: 30px">Change</button></div>
+							<button type="button" class="s-3" onClick="window.location.href='settings.php'">Cancel</button><br/>
+					</form> 
+				</article>
+			</div>
+		</div>
 	</div>
 
 <!-- FOOTER -->
-<?php  include("footer.php");
+<?php  include_once("templates/footer.php");
 ?>
 

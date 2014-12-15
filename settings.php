@@ -20,7 +20,7 @@
 
   $rows = $stmt->fetchAll();
 
-  include("header.php");
+  include("templates/header.php");
 ?>
 
  <div class="line">
@@ -28,41 +28,35 @@
           <div class="margin">
 
         <!-- CONTENT -->
-            <article class="s-12 l-8">
+            <article class="customform s-12 l-8">
               <h1>Personal Settings</h1>
         <?php
 
              $First_name  = $_SESSION['user']['First_name'];
              $Last_name = $_SESSION['user']['Last_name'];
 
-              echo "Your name: " . $First_name ." " . $Last_name;
+              echo "Name: " . $First_name ." " . $Last_name;
 
         ?>
-
-       <a href='NameEdit.php'>Edit Name</a><br/>
+		<br/>
 
        <?php
 
              $Username  = $_SESSION['user']['Username'];
       
-              echo "Your username: " . $Username;
+              echo "Username: " . $Username;
 
         ?>
         <br/>
 
         <?php
-        echo "Your Email: ".htmlentities($_SESSION['user']['Email'], ENT_QUOTES, 'UTF-8'). "";
+        echo "Email: ".htmlentities($_SESSION['user']['Email'], ENT_QUOTES, 'UTF-8'). "";
         ?>
 
         <br/> 
 
-        <?php
-
-              echo "Your Password: ********** " ;
-
-        ?>
-
-       <a href='PasswordEdit.php'>Edit Password</a><br/>
+		<button type="button" class="s-3" onClick="window.location.href='NameEdit.php'"style="margin-right: 30px">Change Name</button> 
+		<button type="button" class="s-3" onClick="window.location.href='PasswordEdit.php'">Change Password</button><br/>
 
         <br/>
 
@@ -70,6 +64,6 @@
             </article>
 </div></div></div>
 <!-- FOOTER -->
-<?php  include("footer.php");
+<?php  include("templates/footer.php");
 ?>
 

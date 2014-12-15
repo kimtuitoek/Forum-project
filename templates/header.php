@@ -5,7 +5,7 @@
   <title>Responsive Online Store template</title>
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsee.css">
-  <link href="<?php echo $template; ?>css/custom.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
   
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>  

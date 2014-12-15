@@ -7,7 +7,7 @@
 //<!--Header-->
   $_SESSION['title'] ="Edit names";
  
-  include_once("header.php");
+  include_once("templates/header.php");
 
 
   //Enable or disable mature content
@@ -49,53 +49,28 @@
      
 ?>
     
-      <!-- ASIDE NAV AND CONTENT -->
-      <div class="line">
-        <div class="box margin-bottom">
-          <div class="margin">
-          <!-- CONTENT -->
-            <article class="s-12 l-8">
-              <h1>Personal Settings</h1>
-        <p>
-        	<form method="post">
-        	Name: 
-        	<input type="text" name="First_name" value="<?php echo $_SESSION['user']['First_name']?>"/>
-        	<input type="text" name="Last_name" value="<?php echo $_SESSION['user']['Last_name']?>"/>
-        	<input type="submit" value="Save changes"/> <a href="settings.php">Cancel</a><br/>
-        </form>
-    	</p>
+	<!-- ASIDE NAV AND CONTENT -->
+	<div class="line">
+		<div class="box margin-bottom">
+			<div class="margin">
+				<article class="customform s-12 l-8">
+				<h1>Change Name</h1>
+				<p>
+					<form method="post">
+						First Name<input type="text" name="First_name" value="<?php echo $_SESSION['user']['First_name']?>"/>
+						Last Name<input type="text" name="Last_name" value="<?php echo $_SESSION['user']['Last_name']?>"/>
+						<button type="submit" class="s-3" style="margin-right: 30px">Save changes</button> 
+						<button type="button" class="s-3" onClick="window.location.href='settings.php'">Cancel</button><br/>
+					</form>
+				</p>
+				</article>
+			</div>
+		</div>
+	</div>
    
-	      <?php
-
-             $Username  = $_SESSION['user']['Username'];
-      
-              echo "<strong>Username: </strong>" . $Username;
-
-        ?>
-        <br/>
-
-	      <?php
-	      echo "<strong>Email: </strong>".htmlentities($_SESSION['user']['Email'], ENT_QUOTES, 'UTF-8'). "";
-	      ?>
-
-	      <br/>	
-
-	      <?php
-              echo "<strong>Password: </strong>********** " ;
-	      ?>
-
-	     <a href='PasswordEdit.php'>Edit Password</a><br/>
-<br/><br/><br/>
-        
-    
-    <br/><br/><br/><br/>
-
-
-
-            </article>
             
       <!-- FOOTER -->
 <?php
-  include_once("footer.php");
+  include_once("templates/footer.php");
   
 ?>

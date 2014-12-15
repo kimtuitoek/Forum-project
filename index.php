@@ -20,21 +20,23 @@
 
   $rows = $stmt->fetchAll();
 
-   include("header.php");
+   include("templates/header.php");
 ?>
   
-      <!-- ASIDE NAV AND CONTENT -->
-      <div class="line">
-        <div class="box">
-          <div class="margin">
-          <!-- CONTENT -->
-            <section class="s-12 l-9 right">
-              <h1>Home</h1>
-                  <div class="margin">
-                  </div>
-            </section>
+	<!-- ASIDE NAV AND CONTENT -->
+	<div class="line">
+		<div class="box">
+			<div class="margin">
+				<!-- CONTENT -->
+		            <section class="s-12 l-9 right">
+						<h1>Home</h1>
+							<div> class="margin" </div>
+					</section>
+			</div>
+		</div>
+	</div>
             <!-- ASIDE NAV -->
            
     <!-- FOOTER -->
-<?php  include("footer.php");
+<?php  include("templates/footer.php");
 ?>

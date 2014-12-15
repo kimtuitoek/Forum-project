@@ -20,13 +20,44 @@
 		$first_name = $_POST['first_name'];
 		$last_name = $_POST['last_name'];
 		$email = $_POST['email'];
-		$Username = $_POST['Username'];
+		$username = $_POST['username'];
 	
 		// We will use this SQL query to see whether the username entered by the 
 		// user is already in use.  A SELECT query is used to retrieve data from the database. 
 		// :username is a special token, we will substitute a real value in its place when 
 		// we execute the query.
 		 
+			$query = "
+				SELECT
+					1
+				FROM User
+				WHERE
+					Username = :username
+			";
+			
+			$query_params = array(
+				':username' => $_POST['username']
+			);
+			
+			try
+			{
+				$stmt = $db->prepare($query);
+				$result = $stmt->execute($query_params);
+			}
+		
+			catch(PDOException $ex)
+			{
+				die("Failed to run query: " . $ex->getMessage());
+			}
+				
+			$row = $stmt->fetch();
+				
+			if($row)
+			{
+				$_SESSION['error']['username'] = "This Username is already registered";
+				$validation_passed = False;
+			}
+		
 		// Now we perform the same type of check for the email Username, in order 
 		// to ensure that it is unique. 
 	
@@ -79,7 +110,7 @@
 				:email,
 				:first_name,
 				:last_name,
-				:Username
+				:username
 			) 
 		"; 
 		 
@@ -108,7 +139,7 @@
 			':email' => $_POST['email'],
 			':first_name' => $_POST['first_name'],
 			':last_name' => $_POST['last_name'],
-			':Username' => $_POST['Username']
+			':username' => $_POST['username']
 		); 
 		 
 		try 
@@ -156,56 +187,56 @@
 <!--Header-->
 <?php
 	$_SESSION['title'] ="Sign Up";
-	include_once("Templates/header.php");
+	include_once("templates/header.php");
 	$error = $_SESSION['error'];
 ?>
       <!-- HOME PAGE BLOCK -->      
       <div class="line">
-        <div class="" "s-12 l-8 right" > 
+        <div class="s-18 l-12" > 
          <h1>Sign up</h1>
 		<div class="box">
-		<form name="signup" action="register.php" method="post" class="customform s-12 l-8">
+		<form name="signup" action="register.php" method="post" class="customform s-18 l-8">
 				<span class="signupError">
 				<?php if (isset($error['message'])) {echo $error['message'];} ?></span>
 				
 				<div class="s-9"> <span class="signupError">
 					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-				First Name:<span class="signupError">
+				First Name<span class="signupError">
 				<?php if (isset($error['names'])) {echo $error['names'];} ?></span>
 				<input type="text"  name="first_name" 
 				value="<?php echo $first_name; ?>" /></div>
 			
 				<div class="s-9"> <span class="signupError">
 					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-				Last Name:<span class="signupError">
+				Last Name<span class="signupError">
 					<?php if (isset($error['names'])) {echo $error['names'];} ?></span>
 					<input type="text"  name="last_name" 
 					value="<?php echo $last_name; ?>" /></div>
 			
 				<div class="s-9"><span class="signupError">
 					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-				Email:<span class="signupError">
+				Email<span class="signupError">
 					<?php if (isset($error['email'])) {echo $error['email'];} ?></span>
 					<input type="text"  name="email" 
 					value="<?php echo $email; ?>" /></div>
 			
 				<div class="s-9"> <span class="signupError">
 					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-				Password:<span class="signupError">
+				Password<span class="signupError">
 					<?php if (isset($error['password'])) {echo $error['password'];} ?></span>
 					<input type="password"  name="password" value="" /></div>
 			
 				<div class="s-9">
-				Confirm Password:<span class="signupError">
+				Confirm Password<span class="signupError">
 					<?php if (isset($error['confirm_password'])) {echo $error['confirm_password'];} ?></span>
 					<input type="password"  name="confirm_password" value="" /></div>
                 
 				<div class="s-9"><span class="signupError">
 					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-				Username:<span class="signupError">
-					<?php if (isset($error['Username'])) {echo $error['Username'];} ?></span>
-					<input type="text"  name="Username" 
-					value="<?php echo $Username; ?>" /></div>
+				Username<span class="signupError">
+					<?php if (isset($error['username'])) {echo $error['username'];} ?></span>
+					<input type="text"  name="username" 
+					value="<?php echo $username; ?>" /></div>
 				
 				<br/>
 				<div class="s-9" ><input type="checkbox" name="Terms" value="checked">
@@ -218,10 +249,9 @@
 		</div>
        </div> 
       </div>   
-    </section> 
 	<br/>
 
 <!--Footer-->
 <?php
-	include_once("Templates/footer.php");
+	include_once("templates/footer.php");
 ?>

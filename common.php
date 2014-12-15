@@ -5,7 +5,7 @@
     // These variables define the connection information for your MySQL database 
     $username = "kim"; 
     $password = "Sema"; 
-    $host = "75.155.72.50:4000"; 
+    $host = "192.168.0.112:4000"; 
     $dbname = "cpsc471project";
 	
 	//Security settings

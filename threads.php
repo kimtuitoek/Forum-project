@@ -20,7 +20,7 @@
 
   $rows = $stmt->fetchAll();
 
-  include("header.php");
+  include("templates/header.php");
 ?>
     
       <!-- ASIDE NAV AND CONTENT -->
@@ -94,5 +94,5 @@
       </div>
       
 <!-- FOOTER -->
-<?php  include("footer.php");
+<?php  include("templates/footer.php");
 ?>

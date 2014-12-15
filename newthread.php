@@ -45,7 +45,7 @@
   die("Redirecting to: posts.php?id=&obj=".$Object_id);
   }
 
-  include("header.php");
+  include("templates/header.php");
   ?>
 
   
@@ -60,12 +60,12 @@
                     
         <!--Add new thread-->
         <form action="newthread.php" method="post" class="customform s-12 l-8">
-          <p>Create new thread:</p>
-               <div>Name: <input type="textbox" name="thread_name" value=""> 
+               <div>Name: <input type="text" name="thread_name" value=""> 
                   Type: <select name="Type">
                           <option value="Public">Public</option>
                           <option value="Private">Private</option>
                         </select>
+               </div>
                <div class="s-9" ><button type="submit">Create</button></div>
         </form>
 
