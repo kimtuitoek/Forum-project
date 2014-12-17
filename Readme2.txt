@@ -1,0 +1,12 @@
+-----Fixes-----
+- I have made a few changes to the header.php to allow the search features to work
+- I have also fixed the issue with the css styles not displaying correctly
+	- All the links should now be blue
+	- The top Nav bar is now visible and on the right side
+
+-----Search-----
+- There is a a new js file in the js folder called seach.js that handles the search as you type
+- 2 new files search.php and search_db.php have been added
+	- search_db.php handles the search as you type
+	- search.php displays the table when you click search with a keyword
+- The search implemented only searches words that start with what you are typing or start with the sequence entered

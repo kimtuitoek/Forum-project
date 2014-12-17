@@ -2,72 +2,65 @@
 
   // First we execute our common code to connection to the database and start the session 
   require("common.php");
+  
+  //Query to select threads and topics
+  $query = "SELECT * FROM Thread as t1 JOIN User as u on t1.User_id = u.User_id WHERE Name LIKE :qVals";;
+  $search =  $_GET['q']."%";
+  $query_params = array('qVals' => $search);
 
-  if(!empty($_POST))
-  {
-
-
-  	//Query to select threads and topics
-  	$query = "INSERT INTO Thread ( 
-				User_id,
-				Name,
-        Date,
-        Object_id,
-        Type
-			) VALUES ( 
-				:User_id,
-				:Name,
-        NOW(),
-        :Object_id,
-        :Type	
-				)"; 
-
-    $Object_id = sha1($_POST['thread_name'].date("h:i:sa"));
-
-  	$query_params = array( 
-      ':User_id' => $_SESSION['user']['User_id'],
-      ':Name' => $_POST['thread_name'],
-      ':Object_id' => $Object_id,
-      ':Type' => $_POST['Type']);
-
-  	try 
+  try 
   { 
     // Execute the query against the database 
     $stmt = $db->prepare($query); 
-    $result = $stmt->execute($query_params);  
+    $stmt->execute($query_params);
+     
   } 
+  
   catch(PDOException $ex) 
   { 
     die("Failed to run query: " . $ex->getMessage()); 
   } 
 
-  header("Location: posts.php?id=&obj=".$Object_id);
-  die("Redirecting to: posts.php?id=&obj=".$Object_id);
-  }
+  $rows = $stmt->fetchAll();
 
-  include("templates/header.php");
-  ?>
-
-  
+  include("header.php");
+?>
+    
       <!-- ASIDE NAV AND CONTENT -->
       <div class="line">
         <div class="box">
           <div class="margin">
           <!-- CONTENT -->
             <section class="s-12 l-9 right">
-              <h1>New thread</h1>
+              <h1>Threads</h1>
                   <div class="margin">
-                    
-        <!--Add new thread-->
-        <form action="newthread.php" method="post" class="customform s-12 l-8">
-               <div>Name: <input type="text" name="thread_name" value=""> 
-                  Type: <select name="Type">
-                          <option value="Public">Public</option>
-                          <option value="Private">Private</option>
-                        </select>
-               </div>
-               <div class="s-9" ><button type="submit">Create</button></div>
-        </form>
+                    <table class="responstable">
+  
+  <tr>
+    <th>Name</th>
+    <th>Number of posts</th>
+    <th>Views</th>
+    <th>Date of creation</th>
+    <th>Owner</th>
+    <th>Options</th>
+  </tr>
+  
+  <?php
+  foreach ($rows as $row) { ?>
+  <tr>
+    <td><a href="posts.php?id=<?php echo($row['Thread_id'])?>&obj=<?php echo($row['Object_id'])?>&views=<?php echo($row['Views'])?>">
+        <?php echo $row['Name']." (".$row['Type'].")";?> </a></td>
+    <td> <?php echo $row['Post_count']; ?></td>
+    <td> <?php echo $row['Views']; ?> </td>
+    <td> <?php echo $row['Date']; ?> </td>
+    <td> <?php echo $row['Username']; ?> </td>
+    <td><a>Rename</a><br/> <a>Lock</a><br/> <a>Delete</a></td>
+  </tr>
+  <?php  }?>
+  
+</table>
+        <!--New thread button-->
+        <a class="Button" href="newthread.php">New thread</a>
 
            </div>
             </section>
@@ -102,14 +95,7 @@
           </div>
         </div>  
       </div>
-      <!-- FOOTER -->
-      <footer class="line">
-        <div class="s-12 l-6">
-          <p>© 2013 Responsee, All Rights Reserved</p>
-        </div>
-        <div class="s-12 l-6">
-          <p class="right">Design and coding by Responsee</p>
-        </div>
-      </footer>
-  </body>
-</html>
+      
+<!-- FOOTER -->
+<?php  include("footer.php");
+?>
