@@ -1,42 +1,42 @@
-<?php 
+<?php
 
-  // First we execute our common code to connection to the database and start the session 
-  require("common.php");
-  
-  //Query to select threads and topics
-  $query = "SELECT * FROM Topic as t0 JOIN Thread as t1 on t0.Topic_id = t1.Topic_id JOIN User as u on t1.User_id = u.User_id";
+// First we execute our common code to connection to the database and start the session
+require ("common.php");
 
-  try 
-  { 
-    // Execute the query against the database 
-    $stmt = $db->prepare($query); 
-    $stmt->execute();
-  } 
+// Query to select threads and topics
+$query = "SELECT * FROM Topic as t0 JOIN Thread as t1 on t0.Topic_id = t1.Topic_id JOIN User as u on t1.User_id = u.User_id";
 
-  catch(PDOException $ex) 
-  { 
-    die("Failed to run query: " . $ex->getMessage()); 
-  } 
+try {
+	// Execute the query against the database
+	$stmt = $db->prepare ( $query );
+	$stmt->execute ();
+} 
 
-  $rows = $stmt->fetchAll();
+catch ( PDOException $ex ) {
+	die ( "Failed to run query: " . $ex->getMessage () );
+}
 
-   include("templates/header.php");
+$rows = $stmt->fetchAll ();
+
+include ("templates/header.php");
 ?>
-  
-	<!-- ASIDE NAV AND CONTENT -->
-	<div class="line">
-		<div class="box">
-			<div class="margin">
-				<!-- CONTENT -->
-		            <section class="s-12 l-9 right">
-						<h1>Home</h1>
-							<div> class="margin" </div>
-					</section>
-			</div>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box">
+		<div class="margin">
+			<!-- CONTENT -->
+			<section class="s-12 l-9 right">
+				<h1>Home</h1>
+				<div>class="margin"</div>
+			</section>
 		</div>
 	</div>
-            <!-- ASIDE NAV -->
-           
-    <!-- FOOTER -->
-<?php  include("templates/footer.php");
+</div>
+<!-- ASIDE NAV -->
+
+<!-- FOOTER -->
+<?php
+
+include ("templates/footer.php");
 ?>

@@ -5,30 +5,12 @@ require ("common.php");
 
 	// Update views count
 	$query = 	"UPDATE Thread 
-				SET Status = :1  
-				WHERE Object_id = :object_id
-				AND Status = 0 ";
+				SET Status = IF(Status=1, 0, 1)  
+				WHERE Object_id = :object_id ";
 	$query_params = array (
 			':object_id' => $_GET ['obj'],
 	);
 
-	try {
-		// Execute the query against the database
-		$stmt = $db->prepare ( $query );
-		$result = $stmt->execute ( $query_params );
-	} catch ( PDOException $ex ) {
-		die ( "Failed to run query: " . $ex->getMessage () );
-	}
-	
-	// Update views count
-	$query = 	"UPDATE Thread
-				SET Status = :0
-				WHERE Object_id = :object_id
-				AND Status = 1 ";
-	$query_params = array (
-			':object_id' => $_GET ['obj'],
-	);
-	
 	try {
 		// Execute the query against the database
 		$stmt = $db->prepare ( $query );
