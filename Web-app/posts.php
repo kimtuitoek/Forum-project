@@ -7,7 +7,7 @@ $_SESSION ['previous_page'] = $_SERVER ['PHP_SELF'] . "?id=" . $_GET ['id'] . "&
 
 if (! empty ( $_GET )) {
 	// Query to select threads and topics
-	$query = "SELECT * FROM Post as p JOIN User as u on p.User_id = u.User_id JOIN Thread as t on t.Thread_id = p.Thread_id Where t.Thread_id = :thread_id or t.Object_id = :obj";
+	$query = "SELECT *, u.User_id as User_id FROM Post as p JOIN User as u on p.User_id = u.User_id JOIN Thread as t on t.Thread_id = p.Thread_id Where t.Thread_id = :thread_id or t.Object_id = :obj";
 	
 	$query_params = array (
 			':thread_id' => $_GET ['id'],
