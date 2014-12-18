@@ -65,18 +65,20 @@ include_once ("templates/header.php");
 		<div class="margin">
 			<!-- CONTENT -->
 			<section class="s-12 l-9 right">
+				<article class="customform s-12 l-8">
 				<!--Edit old post-->
-				<form action="edit-post.php" method="post" class="customform s-12 l-12">
+				<form action="edit-post.php" method="post">
 					<p>Edit Post:</p>
 					<div>
 					<textarea name="text_post" style=" height: 121px;"><?php echo $row['Body'];?></textarea>
 					</div>
 					<input type="hidden" name="post_id"	value="<?php echo($_GET['p_id']);?>">
-					<div  style="display: inline" class="s-2">
-						<button type="submit" style="display: inline">Post</button>
-						<button type="button" onclick="history.go(-1)" style="display: inline"><b>Back</b></button>
+					<div style="display: inline">
+						<button class="s-3" type="submit" style="margin-right: 30px">Post</button>
+						<button class="s-3" type="button" onclick="history.go(-1)"><b>Cancel</b></button>
 					</div>
 				</form>
+			</article>
 			</section>
 		</div>
 	</div>
