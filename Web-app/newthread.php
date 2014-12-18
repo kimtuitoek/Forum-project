@@ -15,9 +15,9 @@ if (! empty ( $_POST )) {
 			) VALUES ( 
 				:User_id,
 				:Name,
-        NOW(),
-        :Object_id,
-        :Type	
+       			 NOW(),
+        		:Object_id,
+        		:Type	
 				)";
 	
 	$Object_id = sha1 ( $_POST ['thread_name'] . date ( "h:i:sa" ) );
@@ -88,7 +88,7 @@ include ("templates/header.php");
 								<option value="Private">Private</option>
 							</select>
 						</div>
-						<div class="s-9">
+						<div class="s-9 l-3">
 							<button type="submit">Create</button>
 						</div>
 					</form>

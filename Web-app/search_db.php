@@ -1,6 +1,6 @@
 <?php
 	require("common.php");
-
+	
 	$query = "SELECT * FROM Thread WHERE Name LIKE :qVals";
    	$search =  $_GET['q']."%";
    	$query_params = array('qVals' => $search);

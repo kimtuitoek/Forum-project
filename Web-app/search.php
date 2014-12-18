@@ -3,6 +3,8 @@
   // First we execute our common code to connection to the database and start the session 
   require("common.php");
   
+  $_SESSION ['previous_page'] = $_SERVER ['PHP_SELF'] . "?q=" . $_GET['q'];
+    
   //Query to select threads and topics
   $query = "SELECT *, t1.Status as thread_status, t1.Post_count as Post_count FROM Thread as t1 JOIN User as u on t1.User_id = u.User_id WHERE Name LIKE :qVals";;
   $search =  $_GET['q']."%";
