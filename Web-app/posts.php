@@ -77,7 +77,8 @@ include ("templates/header.php");
 						<tr>
 							<td>
 								<a style="font-size: 75%"> Posted on: <?php echo($row['Date']);?> </a>
-								<?php if($row['User_id'] == $_SESSION ['user']['User_id'] and $thread_status !== '1') : ?>
+								<?php if (!isset($_SESSION['user']['Priviledge'])) : ?>
+								<?php elseif ($row['User_id'] == $_SESSION ['user']['User_id'] and $thread_status !== '1') : ?>
 									<a	href="edit-post.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>" style="font-size: 75%; float:right" >Edit</a>
 								<?php elseif (!$row['User_id'] <> $_SESSION ['user']['User_id'] and $thread_status !== '1') :?>
 									<a	href="report-post.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>" style="font-size: 75%; float:right" >Report</a>
