@@ -50,13 +50,14 @@ if (! empty ( $_GET )) {
 		// Execute the query against the database
 		$stmt = $db->prepare ( $query3 );
 		$stmt->execute ( $query_params3 );
+		$result3 = $stmt->fetch();
 	}
 	
 	catch ( PDOException $ex ) {
 		die ( "Failed to run query: " . $ex->getMessage () );
 	}
 	
-	$thread_status = $stmt->fetchAll ();
+	$thread_status =$result3['Status'];
 }
 
 include ("templates/header.php");
@@ -80,7 +81,7 @@ include ("templates/header.php");
 					</tr>
 
 					<tr>
-						<td><?php if($row['User_id'] == $_SESSION ['user']['User_id']) { ?>
+						<td><?php if($row['User_id'] == $_SESSION ['user']['User_id'] and $thread_status !== '1') { ?>
 							<a
 							href="edit-post.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>">Edit</a>
 						</td>
@@ -88,11 +89,13 @@ include ("templates/header.php");
 					</tr>
 				</table>
 				<br />
-				<br />  
+				<br /> 
+				
+					 
 					<?php }?>
 					
 					<!-- Only show option to post if thread is not locked. Else show locked text.-->
-					<?php if ($thread_status !== 1) :?>
+					<?php if ($thread_status !== '1') :?>
 					
 					<!--Add new post-->
 					<form action="newpost.php" method="post" class="customform s-12">
@@ -106,7 +109,9 @@ include ("templates/header.php");
 					</form>
 					
 					<?php else :?>
-					<button >Thread Locked</button>
+					<form method="post" class="customform s-12">
+						<button class="customform s-2" type="submit">Thread Locked</button>
+					</form>
 					<?php endif?>
 			</section>
 		</div>
