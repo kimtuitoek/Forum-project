@@ -72,7 +72,7 @@ include ("templates/header.php"); ?>
 					</table>
 					<!--New thread button-->
 					<form class="customform">
-						<button  type="button" class="customform s-2 l-2" onClick="window.location.href='newthread.php'"><b>New thread</b></button>
+						<button  type="button" class="customform s-9 l-2" onClick="window.location.href='newthread.php'"><b>New thread</b></button>
 					</form>
 
 				</div>
