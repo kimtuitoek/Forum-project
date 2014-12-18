@@ -17,11 +17,11 @@ public class MainActivity extends ActionBarActivity {
 		WebView webview = new WebView(this);
 		setContentView(webview);
 		
-		webview.loadUrl("http://forumproject.netau.net/Web-app/");
+		webview.loadUrl("http://75.155.72.50:8080/");
 
 		/*
 		JSONObject jsonobject;
-		jsonobject = JSONfunctions.getJSONfromURL("http://YOUR_DATABASE_URL");
+		jsonobject = JSONfunctions.getJSONfromURL("75.155.72.50");
 		*/
 	}
 
