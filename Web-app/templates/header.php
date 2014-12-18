@@ -30,7 +30,7 @@
         <?php
 								if (empty ( $_SESSION ['user'] )) {
 									?>
-          <li><a href='login.php'>Customer Login </a></li>
+          <li><a href='login.php'>Login </a></li>
 					<li><a href='register.php'> Sign up</a></li>
           <?php
 								} else {
@@ -72,6 +72,21 @@
 					<ul>
 						<li><a href="index.php">Home</a></li>
 						<li><a href="threads.php">Forums</a></li>
+						<li><a>User details</a>
+							<ul>   
+        						<?php
+								if (empty ( $_SESSION ['user'] )) {
+									?>
+          					<li><a href='login.php'>Login </a></li>
+							<li><a href='register.php'> Sign up</a></li>
+          						<?php
+								} else {
+									?>
+							<li><a href='settings.php'>MyAccount</a></li>
+							<li><a href='logout.php'>Logout</a></li>
+							<?php }?>
+							</ul>
+						</li>
 					</ul>
 				</div>
 				<div class=" hide-s l-2">
