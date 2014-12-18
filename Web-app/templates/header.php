@@ -43,25 +43,26 @@
 		</div>
 
 		<div class="line">
-			<div class="box">
-				<div class="s-6 l-2">
-					<img src="img/logo.png">
-				</div>
-				<div class="s-12 l-8 right">
-					<div class="margin">
-						<form class="customform s-12 l-8" action="http://google.com/">
-							<div class="s-9">
-								<input type="text" value="Search form" title="Search form" />
-							</div>
-							<div class="s-3">
-								<button type="submit">Search</button>
-							</div>
-						</form>
-						<div class="s-12 l-4"></div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="box">
+          <div class="s-6 l-2">
+            <img src="img/logo.png">
+          </div>
+          <div class="s-12 l-8 right">
+            <div class="margin">
+              <form  class="customform s-12 l-8" name="search_form" action="search.php" method="get" autocomplete="off">
+                <div class="s-9"><input id="search" type="text" name="q" value="Search form" title="Search form" onkeyup='ajaxFunction()'/>
+                  <!--Display search results-->
+                  <ul class="results" id="ajaxDiv"></ul>
+                </div>
+                <div class="s-3"><button type="submit">Search</button></div>
+              </form>
+              <div class="s-12 l-4">
+                
+              </div>
+            </div>
+           </div> 
+        </div>
+      </div>
 		<!-- TOP NAV -->
 		<div class="line">
 			<nav>

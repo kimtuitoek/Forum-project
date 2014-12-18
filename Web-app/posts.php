@@ -4,6 +4,9 @@
 require ("common.php");
 
 // Store previoue page location incase of new post
+if(!isset($_GET['views']))
+	$_GET['views'] = 0;
+
 $_SESSION ['previous_page'] = $_SERVER ['PHP_SELF'] . "?id=" . $_GET ['id'] . "&obj=" . $_GET ['obj'] . "&views=" . $_GET ['views'];
 
 if (! empty ( $_GET )) {
@@ -60,6 +63,7 @@ if (! empty ( $_GET )) {
 	$thread_status =$result3['Status'];
 }
 
+	$thread_id = 0;
 include ("templates/header.php");
 ?>
 
@@ -85,7 +89,8 @@ include ("templates/header.php");
 							<a
 							href="edit-post.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>">Edit</a>
 						</td>
-							<?php } ?>
+							<?php 
+							} ?>
 					</tr>
 				</table>
 				<br />
@@ -98,15 +103,13 @@ include ("templates/header.php");
 					<?php if ($thread_status !== '1') :?>
 					
 					<!--Add new post-->
-					<form action="newpost.php" method="post" class="customform s-12">
-						<p>New Post:</p>
-						<textarea name="text_post" style="width: 808px; height: 121px;"></textarea>
-						<input type="hidden" name="thread_id"
-							value="<?php echo($_GET['id']);?>">
-						<div class="s-2">
-							<button type="submit">Post</button>
-						</div>
-					</form>
+					<form action="newpost.php" method="post" class="customform s-12 l-8">
+               		<p>New Post:</p>
+               		<textarea name="text_post"style="width: 808px; height: 121px;"></textarea>
+               		<input type="hidden" name="thread_id" value="<?php echo($_GET['id']);?>">
+               		<input type="hidden" name="obj" value="<?php echo($_GET['obj']);?>">
+               		<div class="s-9" ><button type="submit">Post</button></div>
+             		</form>
 					
 					<?php else :?>
 					<form method="post" class="customform s-12">

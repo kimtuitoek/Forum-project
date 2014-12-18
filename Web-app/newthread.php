@@ -39,13 +39,18 @@ if (! empty ( $_POST )) {
 	
 	header ( "Location: posts.php?id=&obj=" . $Object_id );
 	die ( "Redirecting to: posts.php?id=&obj=" . $Object_id );
-}
+  }
+   
+   if(empty($_SESSION['user']))
+  {
+      $_SESSION['previous_page'] = "newthread.php";
+      header("Location: login.php");
+      die("Redirecting to: login.php");
+  }
 
 include ("templates/header.php");
 ?>
 
-
-<<<<<<< HEAD
 <!-- ASIDE NAV AND CONTENT -->
 <div class="line">
 	<div class="box">
@@ -54,17 +59,6 @@ include ("templates/header.php");
 			<section class="s-12 l-9 right">
 				<h1>New thread</h1>
 				<div class="margin">
-=======
-  if(empty($_SESSION['user']))
-  {
-      $_SESSION['previous_page'] = "newthread.php";
-      header("Location: login.php");
-      die("Redirecting to: login.php");
-  }
-
-  include("header.php");
-  ?>
->>>>>>> master
 
 					<!--Add new thread-->
 					<form action="newthread.php" method="post"

@@ -23,7 +23,7 @@
 
   $rows = $stmt->fetchAll();
 
-  include("header.php");
+  include("template/header.php");
 ?>
     
       <!-- ASIDE NAV AND CONTENT -->
@@ -32,7 +32,7 @@
           <div class="margin">
           <!-- CONTENT -->
             <section class="s-12 l-9 right">
-              <h1>Threads</h1>
+              <h1>Search/Threads</h1>
                   <div class="margin">
                     <table class="responstable">
   
@@ -97,5 +97,5 @@
       </div>
       
 <!-- FOOTER -->
-<?php  include("footer.php");
+<?php  include("template/footer.php");
 ?>
