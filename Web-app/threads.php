@@ -51,14 +51,22 @@ include ("templates/header.php");
   <tr>
 							<td><a
 								href="posts.php?id=<?php echo($row['Thread_id'])?>&obj=<?php echo($row['Object_id'])?>&views=<?php echo($row['Views'])?>">
-      							  <?php echo $row['Name']." (".$row['Type'].")";?> </a></td>
+									<?php if ($row['Status'] === 1) :?>
+										<?php echo $row['Name']." <font color=\"red\">(Locked)</font>";?> </a></td>
+									<?php else :?>
+										<?php echo $row['Name'];?> </a></td>
+									<?php endif?>  
 							<td> <?php echo $row['Post_count']; ?></td>
 							<td> <?php echo $row['Views']; ?> </td>
 							<td> <?php echo $row['Date']; ?> </td>
 							<?php if ($_SESSION['user']['Priviledge'] >= 1) :?>
 								<td> <?php echo $row['Username']; ?> </td>
 								<td><a href="delete.php?obj=<?php echo($row['Object_id'])?>">Delete</a><br>
-								<a href="ToggleLock.php?obj=<?php echo($row['Object_id'])?>">Lock</a> <br>
+								<?php if ($row['Status'] === 1) :?>
+									<a href="ToggleLock.php?obj=<?php echo($row['Object_id'])?>">Unlock</a> <br>
+								<?php else :?>
+									<a href="ToggleLock.php?obj=<?php echo($row['Object_id'])?>">Lock</a> <br>
+								<?php endif?>
 								<a href="RenameThread.php?obj=<?php echo($row['Object_id'])?>">Rename</a></td> 
 							<?php endif ?>
 
