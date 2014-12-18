@@ -66,10 +66,11 @@ include_once ("templates/header.php");
 			<!-- CONTENT -->
 			<section class="s-12 l-9 right">
 				<!--Edit old post-->
-				<form action="edit-post.php" method="post"
-					class="customform s-12">
+				<form action="edit-post.php" method="post" class="customform s-12 l-12">
 					<p>Edit Post:</p>
-					<textarea name="text_post" style="width: 808px; height: 121px;"><?php echo $row['Body'];?></textarea>
+					<div>
+					<textarea name="text_post" style=" height: 121px;"><?php echo $row['Body'];?></textarea>
+					</div>
 					<input type="hidden" name="post_id"	value="<?php echo($_GET['p_id']);?>">
 					<div class="s-2">
 						<button type="submit" >Post</button>
