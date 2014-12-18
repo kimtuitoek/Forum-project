@@ -72,9 +72,9 @@ include_once ("templates/header.php");
 					<textarea name="text_post" style=" height: 121px;"><?php echo $row['Body'];?></textarea>
 					</div>
 					<input type="hidden" name="post_id"	value="<?php echo($_GET['p_id']);?>">
-					<div class="s-2">
-						<button type="submit" >Post</button>
-						<button type="button" onclick="history.go(-1)"><b>Back</b></button>
+					<div  style="display: inline" class="s-2">
+						<button type="submit" style="display: inline">Post</button>
+						<button type="button" onclick="history.go(-1)" style="display: inline"><b>Back</b></button>
 					</div>
 				</form>
 			</section>

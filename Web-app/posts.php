@@ -7,7 +7,7 @@ $_SESSION ['previous_page'] = $_SERVER ['PHP_SELF'] . "?id=" . $_GET ['id'] . "&
 
 if (! empty ( $_GET )) {
 	// Query to select threads and topics
-	$query = "SELECT *, u.User_id as User_id FROM Post as p JOIN User as u on p.User_id = u.User_id JOIN Thread as t on t.Thread_id = p.Thread_id Where t.Thread_id = :thread_id or t.Object_id = :obj";
+	$query = "SELECT *, u.User_id as User_id, t.User_id as t_User_id FROM Post as p JOIN User as u on p.User_id = u.User_id JOIN Thread as t on t.Thread_id = p.Thread_id Where t.Thread_id = :thread_id or t.Object_id = :obj";
 	
 	$query_params = array (
 			':thread_id' => $_GET ['id'],
@@ -81,12 +81,15 @@ include ("templates/header.php");
 								<?php elseif ($row['User_id'] == $_SESSION ['user']['User_id'] and $thread_status !== '1' or $_SESSION ['user']['Priviledge'] <> '0') : ?>
 									<a	href="edit-post.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>" style="font-size: 75%; float:right" >Edit</a>
 								<?php elseif (!$row['User_id'] <> $_SESSION ['user']['User_id'] and $thread_status !== '1') :?>
-									<a	href="report-post.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>" style="font-size: 75%; float:right" >Report</a>
+									<a	href="report.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>" style="font-size: 75%; float:right" >Report</a>
 								<?php endif?>
 							</td>
 						</tr>
 					</table><br/>
 					<?php endforeach;?>
+					<?php if (!$row['t_User_id'] <> $_SESSION ['user']['User_id'] and $thread_status !== '1') :?>
+						<a	href="report.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>" style="font-size: 80%; float:right" >Report Thread</a>
+					<?php endif ?>
 					<br />
 					<br /> 
 					<!-- Only show option to post if thread is not locked. Else show locked text.-->
@@ -95,7 +98,6 @@ include ("templates/header.php");
 					<!--Add new post-->
 					<form action="newpost.php?posts=<?php echo($_GET['posts']);?>&id=<?php echo($_GET['id']);?>&views=<?php echo($_GET['views']);?>" method="post" class="customform s-12 l-12">
            				<p>New Post:</p>
-           				<?php  $_SESSION['previous_page'] = "posts.php?id=".$_GET['id'] ."&views=".$_GET['views'];?>
            				<textarea name="text_post"style=" height: 121px;"></textarea>
            				<input type="hidden" name="thread_id" value="<?php echo($_GET['id']);?>">
            				<input type="hidden" name="obj" value="<?php echo($_GET['obj']);?>">
