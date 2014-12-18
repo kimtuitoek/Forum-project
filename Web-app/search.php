@@ -86,19 +86,19 @@ include ("templates/header.php"); ?>
 				<h3>Filters</h3>
 				<div class="aside-nav">
 					<ul>
-						<li><a>Options</a></li>
-						<li><a>Filters</a>
+						<li><a>FolderA</a></li>
+						<li><a>FolderB</a>
 							<ul>
-								<li><a>Filter 1</a></li>
-								<li><a>Filter 2</a></li>
-								<li><a>Filter 3</a>
+								<li><a>FolderB-A</a></li>
+								<li><a>FolderB-B</a></li>
+								<li><a>FolderB-C</a>
 									<ul>
-										<li><a>Filter 3-1</a></li>
-										<li><a>Filter 3-2</a></li>
-										<li><a>Filter 3-3</a></li>
+										<li><a>FolderB-C-A</a></li>
+										<li><a>FolderB-C-B</a></li>
+										<li><a>FolderB-C-C</a></li>
 									</ul></li>
 							</ul></li>
-						<li><a>Publishers</a>
+						<li><a>FolderC</a>
 							<ul>
 								<li><a>About</a></li>
 								<li><a>Location</a></li>

@@ -140,6 +140,31 @@ include ("templates/header.php");
 					</form>
 					<?php endif?>
 			</section>
+			<!-- ASIDE NAV -->
+			<aside class="s-12 l-3">
+				<h3>Filters</h3>
+				<div class="aside-nav">
+					<ul>
+						<li><a>FolderA</a></li>
+						<li><a>FolderB</a>
+							<ul>
+								<li><a>FolderB-A</a></li>
+								<li><a>FolderB-B</a></li>
+								<li><a>FolderB-C</a>
+									<ul>
+										<li><a>FolderB-C-A</a></li>
+										<li><a>FolderB-C-B</a></li>
+										<li><a>FolderB-C-C</a></li>
+									</ul></li>
+							</ul></li>
+						<li><a>FolderC</a>
+							<ul>
+								<li><a>About</a></li>
+								<li><a>Location</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</aside>
 		</div>
 	</div>
 </div>
