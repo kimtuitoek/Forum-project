@@ -73,7 +73,7 @@ include ("templates/header.php");
 					<?php foreach ($rows as $row) :?>
 					<table class="responstable">
 						<tr> <th>Posted by <?php echo($row['Username']);?> </th> </tr>
-						<tr> <td><?php echo($row['Body'] ."\t"); ?> </td> </tr>
+						<tr> <td style="height:100px;"><?php echo($row['Body'] ."\t"); ?> </td> </tr>
 						<tr>
 							<td>
 								<a style="font-size: 75%"> Posted on: <?php echo($row['Date']);?> </a>
@@ -84,7 +84,7 @@ include ("templates/header.php");
 								<?php endif?>
 							</td>
 						</tr>
-					</table>
+					</table><br/>
 					<?php endforeach;?>
 					<br />
 					<br /> 
