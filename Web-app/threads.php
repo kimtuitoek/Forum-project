@@ -74,12 +74,12 @@ include ("templates/header.php"); ?>
 					<form class="customform">
 						<button  type="button" class="customform s-9 l-2" onClick="window.location.href='newthread.php'"><b>New thread</b></button>
 					</form>
-
 				</div>
+			<br>
 			</section>
 			<!-- ASIDE NAV -->
 			<aside class="s-12 l-3">
-				<h3>Filters</h3>
+				<h3 style="width: 200px;">Filters</h3>
 				<div class="aside-nav">
 					<ul>
 						<li><a>Options</a></li>
