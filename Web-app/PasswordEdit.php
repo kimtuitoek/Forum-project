@@ -67,6 +67,7 @@ if (! empty ( $_POST )) {
 include_once ("templates/header.php");
 ?>
 
+<<<<<<< HEAD
 <!-- ASIDE NAV AND CONTENT -->
 <div class="line">
 	<div class="box margin-bottom">
@@ -98,6 +99,29 @@ include_once ("templates/header.php");
 				</form>
 			</article>
 		</div>
+=======
+
+	<div class="customBorder" "s-12 l-8 right">
+	<fieldset>
+		<h1>Password Edit</h1> 
+		<form action="PasswordEdit.php" method="post" class="customform s-12 l-8"> 
+			<div class="PasswordError"><?php echo $error['message'] ."<br/>"; ?></div>
+				
+			
+				<div class="s-9"> <span class="PasswordError"><?php echo $error['icon']; ?></span>
+				New Password:<span class="signupError"><?php echo $error['password']; ?></span>
+					<input type="password"  name="password" value="" /></div>
+			
+				<div class="s-9">
+				Confirm Password:<span class="PasswordError"><?php echo $error['confirm']; ?></span>
+					<input type="password"  name="confirm_password" value="" /></div>
+				
+			<div class="s-9" ><button type="submit">Change</button></div>
+
+		</form> 
+	<a href="../settings.php" class="s-9" >Cancel</a>
+	</fieldset>
+>>>>>>> master
 	</div>
 </div>
 
