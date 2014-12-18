@@ -156,7 +156,7 @@
 <!--Header-->
 <?php
 	$_SESSION['title'] ="Sign Up";
-	include_once("Templates/header.php");
+	include_once("header.php");
 	$error = $_SESSION['error'];
 ?>
       <!-- HOME PAGE BLOCK -->      
@@ -223,5 +223,5 @@
 
 <!--Footer-->
 <?php
-	include_once("Templates/footer.php");
+	include_once("footer.php");
 ?>

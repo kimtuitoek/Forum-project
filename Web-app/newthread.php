@@ -45,6 +45,13 @@
   die("Redirecting to: posts.php?id=&obj=".$Object_id);
   }
 
+  if(empty($_SESSION['user']))
+  {
+      $_SESSION['previous_page'] = "newthread.php";
+      header("Location: login.php");
+      die("Redirecting to: login.php");
+  }
+
   include("header.php");
   ?>
 

@@ -101,7 +101,7 @@
 			<div class="s-9" ><button type="submit">Change</button></div>
 
 		</form> 
-	<a href="../accountsettings.php" class="s-9" >Cancel</a>
+	<a href="../settings.php" class="s-9" >Cancel</a>
 	</fieldset>
 	</div>
 
