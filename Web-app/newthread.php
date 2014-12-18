@@ -37,7 +37,25 @@ if (! empty ( $_POST )) {
 		die ( "Failed to run query: " . $ex->getMessage () );
 	}
 	
-	header ( "Location: posts.php?id=&obj=" . $Object_id );
+	// Query to select threads and topics
+	$query2 = "SELECT * FROM Thread WHERE Object_id = :obj_id";
+	$query_params2 = array (
+			':obj_id' => $Object_id
+	);	
+	
+	try {
+		// Execute the query against the database
+		$stmt = $db->prepare ( $query2 );
+		$stmt->execute ( $query_params2 );
+	}
+	
+	catch ( PDOException $ex ) {
+		die ( "Failed to run query: " . $ex->getMessage () );
+	}
+	
+	$result = $stmt->fetch ();
+	
+	header ( "Location: posts.php?id=" . $result['Thread_id'] . "&obj=" . $Object_id ."&views=" . $result['Views'] ."&posts=" . $result['Post_count']);
 	die ( "Redirecting to: posts.php?id=&obj=" . $Object_id );
   }
    

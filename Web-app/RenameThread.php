@@ -2,6 +2,7 @@
 
 // First we execute our common code to connection to the database and start the session
 require ("common.php");
+require ("utilities.php");
 
 // <!--Header-->
 $_SESSION ['title'] = "Edit names";
@@ -34,6 +35,8 @@ header ( "Location: " . $_SESSION ['previous_page'] );
 die ( "Redirecting to: " . $_SESSION ['previous_page'] );
 }
 
+$url = "window.location.href=" . $_SESSION ['previous_page'] ;
+
 ?>
 
 <!-- ASIDE NAV AND CONTENT -->
@@ -45,7 +48,7 @@ die ( "Redirecting to: " . $_SESSION ['previous_page'] );
 				<form method="post">
 					New Name <input type="text" name="thread_name" value="">
 					<button type="submit" class="s-3" style="margin-right: 30px">Save changes</button>
-					<button type="button" class="s-3" onClick="window.location.href=$_SESSION ['previous_page']"><b>Cancel</b></button>
+					<button type="button" class="s-3" onClick="back()"><b>Cancel</b></button>
 					<br />
 				</form>
 			</article>

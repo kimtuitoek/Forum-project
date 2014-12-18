@@ -7,7 +7,7 @@ require ("common.php");
 if(!isset($_GET['views']))
 	$_GET['views'] = 0;
 
-$_SESSION ['previous_page'] = $_SERVER ['PHP_SELF'] . "?id=" . $_GET ['id'] . "&obj=" . $_GET ['obj'] . "&views=" . $_GET ['views'];
+$_SESSION ['previous_page'] = $_SERVER ['PHP_SELF'] . "?id=" . $_GET ['id'] . "&obj=" . $_GET ['obj'] . "&views=" . $_GET ['views'] . "&posts=" . $_GET['posts'];
 
 if (! empty ( $_GET )) {
 	// Query to select threads and topics
@@ -103,7 +103,7 @@ include ("templates/header.php");
 					<?php if ($thread_status !== '1') :?>
 					
 					<!--Add new post-->
-					<form action="newpost.php" method="post" class="customform s-12 l-8">
+					<form action="newpost.php?posts=<?php echo($_GET['posts']);?>&id=<?php echo($_GET['id']);?>&views=<?php echo($_GET['views']);?>" method="post" class="customform s-12 l-8">
                		<p>New Post:</p>
                		<textarea name="text_post"style="width: 808px; height: 121px;"></textarea>
                		<input type="hidden" name="thread_id" value="<?php echo($_GET['id']);?>">

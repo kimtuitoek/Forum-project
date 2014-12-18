@@ -4,11 +4,14 @@
 require ("common.php");
 
 // Update views count
-$query2 = "UPDATE Thread SET Views = :views  WHERE Thread_id = :thread_id";
+$query2 = "UPDATE Thread SET Views = :views, Post_count = :posts WHERE Thread_id = :thread_id";
 $query_params2 = array (
 		':thread_id' => $_GET ['id'],
-		':views' => $_GET ['views'] + 1
+		':views' => $_GET ['views'] + 1,
+		':posts' => $_GET['posts'] + 1
 );
+
+
 
 try {
 	// Execute the query against the database
