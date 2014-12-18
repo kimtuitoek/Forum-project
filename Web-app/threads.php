@@ -39,8 +39,8 @@ include ("templates/header.php"); ?>
 							<th>Date of creation</th>
 							<?php if (!isset($_SESSION['user']['Priviledge'])) :?>
 							<?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>
-								<th>Owner</th>
 								<th>Type</th>
+								<th>Owner</th>
 								<th>Options</th>
 							<?php endif ?>
 							</tr> <?php foreach ( $rows as $row ) {?> <tr>
