@@ -99,7 +99,8 @@ include ("templates/header.php");
 						</tr>
 					</table><br/>
 					<?php endforeach;?>
-					<?php if ($thread_info['User_id'] <> $_SESSION ['user']['User_id'] and $_SESSION['user']['Priviledge'] >= 1) :?>
+					<?php if (!isset($_SESSION['user']['Priviledge'])) : ?>
+					<?php elseif ($thread_info['User_id'] <> $_SESSION ['user']['User_id'] and $_SESSION['user']['Priviledge'] >= 1) :?>
 						<a	href="report.php?obj=<?php echo($thread_info['Object_id']);?>" style="font-size: 80%; float:right" >Report Thread</a>
 						<a  style="font-size: 80%; float:right; color: #0099FF; margin-right: 4px; margin-left: 4px" >  -  </a>
 					<?php elseif ($thread_info['User_id'] <> $_SESSION ['user']['User_id'] and $thread_info['Status'] !== '1') :?>

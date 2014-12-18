@@ -4,7 +4,7 @@
 <meta http-equiv="content-type"
 	content="text/html; charset=windows-1250">
 <meta name="viewport" content="width=device-width" />
-<title>Responsive Online Store template</title>
+<title>Online Forum Template</title>
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/responsee.css">
 <link href="css/custom.css" rel="stylesheet">

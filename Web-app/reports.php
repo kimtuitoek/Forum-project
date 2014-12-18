@@ -21,7 +21,7 @@ catch ( PDOException $ex ) {
 
 if (!isset($row['Post_id'])){
 	// Query to select threads and topics
-	$query2 = "SELECT * FROM Report as r JOIN User as u on r.User_id = u.User_id JOIN Thread as t on r.Object_id = t.Object_id";
+	$query2 = "SELECT *, r.User_id as User_id, r.Object_id as Object_id, r.Date as Date, t.Thread_id as Thread_id  FROM Report as r JOIN User as u on r.User_id = u.User_id JOIN Thread as t on r.Object_id = t.Object_id";
 	
 	try {
 		// Execute the query against the database
@@ -66,7 +66,7 @@ include ("templates/header.php"); ?>
 								<?php endif ?>
 								<td> <?php echo $row['User_id']; ?></td>
 								<td> <?php echo $row['Date']; ?> </td>
-								<td> </td>
+								<td> <?php echo $row['Object_id']; ?> </td>
 								</tr>
 	 						 <?php endforeach ?>
 					</table>
