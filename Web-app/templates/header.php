@@ -29,7 +29,7 @@
         <?php
 								if (empty ( $_SESSION ['user'] )) {
 									?>
-          <li><a href='login.php'>Customer Login </a></li>
+          <li><a href='login.php'>Login </a></li>
 					<li><a href='register.php'> Sign up</a></li>
           <?php
 								} else {

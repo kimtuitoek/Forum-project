@@ -174,15 +174,11 @@ if (! empty ( $_POST )) {
 </head>
 <!--Header-->
 <?php
-<<<<<<< HEAD
+
 $_SESSION ['title'] = "Sign Up";
 include_once ("templates/header.php");
 $error = $_SESSION ['error'];
-=======
-	$_SESSION['title'] ="Sign Up";
-	include_once("header.php");
-	$error = $_SESSION['error'];
->>>>>>> master
+
 ?>
 <!-- HOME PAGE BLOCK -->
 <div class="line">
@@ -259,7 +255,4 @@ $error = $_SESSION ['error'];
 <?php
 <<<<<<< HEAD
 include_once ("templates/footer.php");
-=======
-	include_once("footer.php");
->>>>>>> master
 ?>
