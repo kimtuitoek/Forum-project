@@ -7,7 +7,7 @@ require ("common.php");
 $_SESSION ['previous_page'] = $_SERVER ['PHP_SELF'] ;
 
 // Query to select threads and topics
-$query = "SELECT * FROM Thread as t1 JOIN User as u on t1.User_id = u.User_id";
+$query = "SELECT *, t1.Status as thread_status FROM Thread as t1 JOIN User as u on t1.User_id = u.User_id";
 
 try {
 	// Execute the query against the database
@@ -51,18 +51,19 @@ include ("templates/header.php");
   <tr>
 							<td><a
 								href="posts.php?id=<?php echo($row['Thread_id'])?>&obj=<?php echo($row['Object_id'])?>&views=<?php echo($row['Views'])?>">
-									<?php if ($row['Status'] === 1) :?>
-										<?php echo $row['Name']." <font color=\"red\">(Locked)</font>";?> </a></td>
+									<?php if ($row['thread_status'] == 1) :?>
+										<?php echo $row['Name']." <font color=\"red\">(Locked)</font>";?>
 									<?php else :?>
-										<?php echo $row['Name'];?> </a></td>
+										<?php echo $row['Name'];?>
 									<?php endif?>  
+							 </a></td>
 							<td> <?php echo $row['Post_count']; ?></td>
 							<td> <?php echo $row['Views']; ?> </td>
 							<td> <?php echo $row['Date']; ?> </td>
 							<?php if ($_SESSION['user']['Priviledge'] >= 1) :?>
 								<td> <?php echo $row['Username']; ?> </td>
 								<td><a href="delete.php?obj=<?php echo($row['Object_id'])?>">Delete</a><br>
-								<?php if ($row['Status'] === 1) :?>
+								<?php if ($row['thread_status'] == 1) :?>
 									<a href="ToggleLock.php?obj=<?php echo($row['Object_id'])?>">Unlock</a> <br>
 								<?php else :?>
 									<a href="ToggleLock.php?obj=<?php echo($row['Object_id'])?>">Lock</a> <br>
