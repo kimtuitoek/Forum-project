@@ -94,6 +94,7 @@ include ("templates/header.php");
 					<!--Add new post-->
 					<form action="newpost.php?posts=<?php echo($_GET['posts']);?>&id=<?php echo($_GET['id']);?>&views=<?php echo($_GET['views']);?>" method="post" class="customform s-12 l-12">
            				<p>New Post:</p>
+           				<?php  $_SESSION['previous_page'] = "posts.php?id=".$_GET['id'] ."&views=".$_GET['views'];?>
            				<textarea name="text_post"style=" height: 121px;"></textarea>
            				<input type="hidden" name="thread_id" value="<?php echo($_GET['id']);?>">
            				<input type="hidden" name="obj" value="<?php echo($_GET['obj']);?>">

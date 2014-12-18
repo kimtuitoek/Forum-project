@@ -28,7 +28,7 @@ include ("templates/header.php");
 			<!-- CONTENT -->
 			<section class="s-12 l-9 right">
 				<h1>Home</h1>
-				<div>class="margin"</div>
+				<div></div>
 			</section>
 		</div>
 	</div>

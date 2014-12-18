@@ -2,6 +2,11 @@
 
 // First we execute our common code to connection to the database and start the session
 require ("common.php");
+ if(empty($_SESSION['user']))
+  {
+      header("Location: login.php");
+      die("Redirecting to: login.php");
+  }
 
 // Update views count
 $query2 = "UPDATE Thread SET Views = :views, Post_count = :posts WHERE Thread_id = :thread_id";
