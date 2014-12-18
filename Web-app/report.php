@@ -6,27 +6,23 @@ require ("common.php");
 //Create report
 if(!empty($_GET))
 {
-	$post_id = $_GET['p_id'];
-	$thread_id = $_GET['t_id'];
+	$obj_id = $_GET['obj'];
 	$user_id = $_SESSION['user']['User_id'];
 
 	// Query to select threads and topics
 	$query = "INSERT INTO Report ( 
-				Post_id,
+				Object_id,
 				User_id,
-				Thread_id,
 				Date
 			) VALUES ( 
-				:Post_id,
+				:Object_id,
 				:User_id,
-				:Thread_id,
 				NOW()		
 				)";
 	
 	$query_params = array (
-			':Post_id' => $post_id,
-			':User_id' => $user_id,
-			':Thread_id' => $thread_id);
+			':Object_id' => $obj_id,
+			':User_id' => $_SESSION['user']['User_id']);
 	
 	try {
 		// Execute the query against the database
@@ -40,17 +36,18 @@ if(!empty($_GET))
 
 if(!empty($_POST))
 {
-	$query2 = "UPDATE Report SET Reason = :reason WHERE Thread_id = :thread_id AND Post_id = :post_id";
+	$query2 = "UPDATE Report SET Reason = :reason WHERE Object_id = :object_id AND User_id = :user_id";
 	$query_params2 = array (
-			':Reason' => $_POST ['Reason'],
-			':User_id' => $_SESSION['user']['User_id'],
-			':thread_id' => $_POST['thread_id'],
-			':post_id' => $_POST['post_id']);
+			':reason' => $_POST ['Reason'],
+			':user_id' => $_SESSION['user']['User_id'],
+			':object_id' => $_POST['obj']);
 	
 	try {
 		// Execute the query against the database
 		$stmt = $db->prepare ( $query2 );
 		$result = $stmt->execute ( $query_params2 );
+		header("Location: ". $_SESSION['previous_page']);
+		die("Redirecting to: ". $_SESSION['previous_page']);
 	} catch ( PDOException $ex ) {
 		die ( "Failed to run query: " . $ex->getMessage () );
 	}
@@ -71,10 +68,9 @@ include ("templates/header.php");
 				<form action="report.php" method="post">
 					<p>Report User:</p>
 					<div>
-					<textarea name="Reason" style=" height: 121px;"><?php echo $row['Body'];?></textarea>
+					<textarea name="Reason" style=" height: 121px;"></textarea>
 					</div>
-					<input type="hidden" name="post_id"	value="<?php echo($_GET['p_id']);?>">
-					<input type="hidden" name="thread_id"	value="<?php echo($_GET['t_id']);?>">
+					<input type="hidden" name="obj"	value="<?php echo($_GET['obj']);?>">
 					<div style="display: inline">
 						<button class="s-3" type="submit" style="margin-right: 30px">Report</button>
 						<button class="s-3" type="button" onclick="history.go(-1)"><b>Cancel</b></button>
