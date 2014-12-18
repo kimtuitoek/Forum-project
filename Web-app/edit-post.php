@@ -73,7 +73,8 @@ include_once ("templates/header.php");
 					<input type="hidden" name="post_id"
 						value="<?php echo($_GET['p_id']);?>">
 					<div class="s-2">
-						<button type="submit">Post</button>
+						<button type="submit" >Post</button>
+						<button type="button" onclick="history.go(-1)"><b>Back</b></button>
 					</div>
 				</form>
 			</section>
