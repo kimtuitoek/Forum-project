@@ -15,6 +15,7 @@
 	src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script type="text/javascript" src="js/modernizr.js"></script>
 <script type="text/javascript" src="js/responsee.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
 
 <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
