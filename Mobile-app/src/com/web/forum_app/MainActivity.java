@@ -21,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
 
 		/*
 		JSONObject jsonobject;
-		jsonobject = JSONfunctions.getJSONfromURL("75.155.72.50");
+		jsonobject = JSONfunctions.getJSONfromURL("http://YOUR_DATABASE_URL");
 		*/
 	}
 
