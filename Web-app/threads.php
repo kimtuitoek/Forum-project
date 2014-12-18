@@ -21,8 +21,7 @@ catch ( PDOException $ex ) {
 
 $rows = $stmt->fetchAll ();
 
-include ("templates/header.php");
-?>
+include ("templates/header.php"); ?>
 
 <!-- ASIDE NAV AND CONTENT -->
 <div class="line">
@@ -108,7 +107,4 @@ include ("templates/header.php");
 </div>
 
 <!-- FOOTER -->
-<?php
-
-include ("templates/footer.php");
-?>
+<?php include ("templates/footer.php"); ?>
