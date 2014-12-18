@@ -20,7 +20,7 @@
   <body class="size-1140">
     <!-- HEADER -->
     <header>
-      <div class="line" "box" align="right">
+      <div class="line box" align="right">
         <div class="top-nav s-12 1-10" id="top_navi">
          <ul>   
         <?php
@@ -80,6 +80,6 @@
       </div>
     </header>
 
-    <div class="line">
-        <div class="box">
-          <div class="margin">
+	<div class="line">
+		<div class="box">
+			<div class="margin">
