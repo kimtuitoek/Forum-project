@@ -253,6 +253,5 @@ $error = $_SESSION ['error'];
 
 <!--Footer-->
 <?php
-<<<<<<< HEAD
 include_once ("templates/footer.php");
 ?>

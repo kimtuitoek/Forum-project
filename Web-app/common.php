@@ -3,9 +3,9 @@
 	// http://forums.devshed.com/php-faqs-and-stickies-167/how-to-program-a-basic-but-secure-login-system-using-891201.html
 
     // These variables define the connection information for your MySQL database 
-    $username = "kim"; 
-    $password = "Sema"; 
-    $host = "75.155.72.50:4000"; 
+    $username = "eric"; 
+    $password = "root"; 
+    $host = "192.168.0.112:4000"; 
     $dbname = "cpsc471project";
 	
 	//Security settings

@@ -98,7 +98,7 @@ include_once ("templates/header.php");
 				</form>
 			</article>
 		</div>
-
+	</div>
 </div>
 
 <!-- FOOTER -->
