@@ -70,8 +70,7 @@ include_once ("templates/header.php");
 					class="customform s-12">
 					<p>Edit Post:</p>
 					<textarea name="text_post" style="width: 808px; height: 121px;"><?php echo $row['Body'];?></textarea>
-					<input type="hidden" name="post_id"
-						value="<?php echo($_GET['p_id']);?>">
+					<input type="hidden" name="post_id"	value="<?php echo($_GET['p_id']);?>">
 					<div class="s-2">
 						<button type="submit">Post</button>
 					</div>
