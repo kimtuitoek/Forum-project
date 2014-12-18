@@ -67,7 +67,7 @@
 		<!-- TOP NAV -->
 		<div class="line">
 			<nav>
-				<p class="nav-text">Custom menu text</p>
+				<p class="nav-text">Menu</p>
 				<div class="top-nav s-12 l-10">
 					<ul>
 						<li><a href="index.php">Home</a></li>
