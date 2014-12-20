@@ -8,6 +8,7 @@
 	// to an empty value, which will be shown if the user has not submitted the form. 
 	$submitted_email = ''; 
 	$login_error = "";
+	
 	// This if statement checks to determine whether the login form has been submitted 
 	// If it has, then the login code is run, otherwise the form is displayed 
 	if(!empty($_POST)) 
@@ -15,11 +16,9 @@
 		// This query retreives the user's information from the database using 
 		// their username. 
 		$query = " 
-			SELECT 
-				*
-			FROM User
-			WHERE 
-				Email = :Email 
+			SELECT	*
+			FROM	User
+			WHERE	Email = :Email 
 		"; 
 		 
 		// The parameter values 

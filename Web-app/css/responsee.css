@@ -61,6 +61,21 @@ a, a:link, a:visited, a:hover, a:active {
 	color: #444;
 }
 
+warning, warning:link, warning:visited, warning:hover, warning:active {
+	text-decoration: none;
+	color: red;
+}
+
+subscript, subscript:link, subscript:visited, subscript:hover, subscript:active {
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 80%;
+	float:right; 
+	color: #0099FF;
+	margin-right: 4px;
+	margin-left: 4px"
+}
+
 img {
 	height: auto;
 	width: 100%;
