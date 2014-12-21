@@ -7,8 +7,6 @@ require ("viewServer.php");
 // <!--Header-->
 $_SESSION ['title'] = "Edit names";
 
-include_once ("templates/header.phtml");
-
 // Enable or disable mature content
 if (! empty ( $_POST )) {
 	// This query retreives the user's information from the database using
