@@ -43,11 +43,11 @@
 									<td> <?php echo $row['Username']; ?> </td>
 									<td><a href="delete.php?t_id=<?php echo($row['Thread_id'])?>">Delete</a><br>
 									<?php if ($row['thread_status'] == 1) :?>
-										<a href="toggleLock.php?obj=<?php echo($row['Object_id'])?>">Unlock</a> <br>
+										<a href="toggleLock.php?t_id=<?php echo($row['Thread_id'])?>">Unlock</a> <br>
 									<?php else :?>
-										<a href="toggleLock.php?obj=<?php echo($row['Object_id'])?>">Lock</a> <br>
+										<a href="toggleLock.php?t_id=<?php echo($row['Thread_id'])?>">Lock</a> <br>
 									<?php endif?>
-									<a href="renameThread.php?obj=<?php echo($row['Object_id'])?>">Rename</a></td> 
+									<a href="renameThread.php?t_id=<?php echo($row['Thread_id'])?>">Rename</a></td> 
 								<?php endif ?>
 								</tr>
 	 						 <?php  }?>

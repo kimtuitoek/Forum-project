@@ -20,6 +20,9 @@ require ("common.php");
 	}
 
 	if (isset($_GET['bt_id'])){
+		//Set the previous page appropriatly so as to not show an empty thread
+		$_SESSION ['previous_page'] = $_SESSION ['previous_previous_page'];
+		
 		// Try to delete the object as if it where a thread
 		try {
 			$query = "	DELETE
@@ -31,9 +34,7 @@ require ("common.php");
 		
 			$stmt = $db->prepare ( $query );
 			$result = $stmt->execute ( $query_params );
-			
-			$_SESSION ['previous_page'] = $_SESSION ['previous_previous_page'];
-		} catch (Exception $e) {
+			} catch (Exception $e) {
 		}
 	}
 	
@@ -53,28 +54,20 @@ require ("common.php");
 			$result = $stmt->execute ( $query_params2 );
 		
 			$thread = $stmt->fetch ();
-		
-			// Update post count for that the thread
-			$query3 = "	UPDATE	Thread
-						SET		Post_count = Post_count - 1
-						WHERE	Object_id = :object_id";
-		
+						
+			$query3 = "	DELETE
+						FROM 	Post
+						WHERE	Post_id = :post_id";
 			$query_params3 = array (
-					':object_id' => $thread ['Object_id'],
+					':post_id' => $_GET ['p_id'],
 			);
 		
 			$stmt = $db->prepare ( $query3 );
 			$result = $stmt->execute ( $query_params3 );
-		
-			$query4 = "	DELETE
-						FROM 	Post
-						WHERE	Post_id = :post_id";
-			$query_params4 = array (
-					':post_id' => $_GET ['p_id'],
-			);
-		
-			$stmt = $db->prepare ( $query4 );
-			$result = $stmt->execute ( $query_params4 );
+			
+			if($thread['Post_count'] == 0){
+				$_SESSION ['previous_page'] = $_SESSION ['previous_previous_page'];
+			}
 		} catch (Exception $e) {
 		}	
 	}

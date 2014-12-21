@@ -24,17 +24,17 @@
 								<text style="font-size: 75%"> Posted on: <?php echo($row['Date']);?> </text>
 								<?php if (!isset($_SESSION['user']['Priviledge'])) : ?>
 								<?php elseif ($row['User_id'] == $_SESSION ['user']['User_id'] and $_SESSION ['user']['Priviledge'] <> '0') :?>
-									<subscript onClick='window.location.href="editPost.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>"'>Edit</subscript>
+									<subscript onClick='window.location.href="editPost.php?p_id=<?php echo($row['Post_id']);?>"'>Edit</subscript>
 									<subscript>  -  </subscript>
 									<subscript onClick='window.location.href="delete.php?p_id=<?php echo($row['Post_id']);?>"'>Delete</subscript>
 								<?php elseif ($row['User_id'] <> $_SESSION ['user']['User_id'] and $_SESSION ['user']['Priviledge'] <> '0') :?>
-									<subscript onClick='window.location.href="editPost.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>"'>Edit</subscript>
+									<subscript onClick='window.location.href="editPost.php?p_id=<?php echo($row['Post_id']);?>"'>Edit</subscript>
 									<subscript>  -  </subscript>
 									<subscript onClick='window.location.href="delete.php?p_id=<?php echo($row['Post_id']);?>"'>Delete</subscript>
 									<subscript>  -  </subscript>
 									<subscript onClick='window.location.href="report.php?obj=<?php echo($row['Object_id']);?>"'>Report</subscript>
 								<?php elseif ($row['User_id'] == $_SESSION ['user']['User_id'] and $thread_info['Status'] !== '1') : ?>
-									<subscript	href="editPost.php?p_id=<?php echo($row['Post_id']);?>&t_id=<?php echo($row['Thread_id']);?>">Edit</subscript>
+									<subscript	href="editPost.php?p_id=<?php echo($row['Post_id']);?>">Edit</subscript>
 								<?php elseif ($row['User_id'] <> $_SESSION ['user']['User_id'] and $thread_info['Status'] !== '1') :?>
 									<subscript	onClick='window.location.href="report.php?obj=<?php echo($row['Object_id']);?>"'>Report</subscript>
 								<?php endif?>
@@ -54,13 +54,13 @@
 						<subscript onClick='window.location.href="delete.php?bt_id=<?php echo($this->thread['Thread_id'])?>"'>Delete</subscript>
 						<?php if ($this->thread['Status'] == 1) :?>
 							<subscript>  -  </subscript>
-							<subscript onClick='window.location.href="toggleLock.php?obj=<?php echo($this->thread['Object_id'])?>"'>Unlock</subscript>
+							<subscript onClick='window.location.href="toggleLock.php?t_id=<?php echo($this->thread['Thread_id'])?>"'>Unlock</subscript>
 						<?php else :?>
 							<subscript>  -  </subscript>
-							<subscript onClick='window.location.href="toggleLock.php?obj=<?php echo($this->thread['Object_id'])?>"'>Lock</subscript> 
+							<subscript onClick='window.location.href="toggleLock.php?t_id=<?php echo($this->thread['Thread_id'])?>"'>Lock</subscript> 
 						<?php endif?>
 						<subscript>  -  </subscript>
-						<subscript onClick='window.location.href="renameThread.php?obj=<?php echo($this->thread['Object_id'])?>"'>Rename</subscript> 
+						<subscript onClick='window.location.href="renameThread.php?t_id=<?php echo($this->thread['Thread_id'])?>"'>Rename</subscript> 
 					<?php endif ?>
 					<br />
 					<br /> 
@@ -72,7 +72,6 @@
            				<p>New Post:</p>
            				<textarea name="text_post"style=" height: 121px;"></textarea>
            				<input type="hidden" name="thread_id" value="<?php echo($_GET['id']);?>">
-           				<input type="hidden" name="obj" value="<?php echo($this->thread['Object_id']);?>">
            				<div class="s-9 l-2" ><button type="submit">Post</button></div>
            			</form>
 	

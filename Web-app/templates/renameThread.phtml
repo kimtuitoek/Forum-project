@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Rename Thread</title>
+</head>
+<body>
+
+<?php include ("header.phtml");?>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box margin-bottom">
+		<div class="margin">
+			<article class="customform s-12 l-9 right">
+				<h1>Change Name</h1>
+				<form method="post">
+					New Name <input type="text" name="thread_name" value="">
+					<button type="submit" class="s-3" style="margin-right: 30px">Save changes</button>
+					<button type="button" class="s-3" onClick="back()"><b>Cancel</b></button>
+					<br />
+				</form>
+			</article>
+			<?php include ("navigation.phtml")?>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<?php include ("footer.phtml"); ?>
+
+</body>
+</html>
