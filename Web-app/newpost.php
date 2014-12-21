@@ -39,27 +39,7 @@ if (! empty ( $_POST )) {
 	} catch ( PDOException $ex ) {
 		die ( "Failed to run query: " . $ex->getMessage () );
 	}
-	
-	// Update post count for the thread
-	$query2 = "	UPDATE	Thread 
-				SET		Post_count = Post_count + 1,
-						Views = Views - 1
-				WHERE	Thread_id = :thread_id";
-	
-	$query_params2 = array (
-			':thread_id' => $_GET ['id'],
-	);
-	
-	try {
-		// Execute the query against the database
-		$stmt = $db->prepare ( $query2 );
-		$result = $stmt->execute ( $query_params2 );
-	} catch ( PDOException $ex ) {
-		die ( "Failed to run query: " . $ex->getMessage () );
-	}
 }
-
-
 
 header ( "Location: " . $_SESSION ['previous_page'] );
 die ( "Redirecting to: " . $_SESSION ['previous_page'] );

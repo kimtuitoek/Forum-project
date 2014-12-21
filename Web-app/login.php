@@ -2,6 +2,7 @@
 
 	// First we execute our common code to connection to the database and start the session 
 	require("common.php"); 
+	require("viewServer.php");
 	 
 	// This variable will be used to re-display the user's username to them in the 
 	// login form if they fail to enter the correct password.  It is initialized here 
@@ -105,79 +106,17 @@
 			// http://en.wikipedia.org/wiki/XSS_attack 
 			$submitted_email = htmlentities($_POST['Email'], ENT_QUOTES, 'UTF-8'); 
 		} 
-	} 
-	 
+	} 	
+	
+$view = new viewServer();
+	
+$view->submitted_email = $submitted_email;
+$view->login_error = $login_error;
+
+$view->render("login.phtml");
 ?>
 
-<!DOCTYPE html>
-<head>
-<meta http-equiv="content-type"
-	content="text/html; charset=windows-1250">
-<meta name="viewport" content="width=device-width" />
-<title>Responsive Business template</title>
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/responsee.css">
-<link rel="stylesheet" href="owl-carousel/owl.carousel.css">
-<link rel="stylesheet" href="owl-carousel/owl.theme.css">
-<link href="css/custom.css" rel="stylesheet">
-
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script type="text/javascript"
-	src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script type="text/javascript" src="js/modernizr.js"></script>
-<script type="text/javascript" src="js/responsee.js"></script>
-<script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>
 
 
-<script type="text/javascript">
-    $(document).ready(function() {     
-    $("#owl-demo").owlCarousel({     
-    navigation : true,
-    slideSpeed : 300,
-    paginationSpeed : 400,
-    autoPlay : true,
-    singleItem:true
-    });
-    });  
-    
-    $(document).ready(function() {     
-    $("#owl-demo2").owlCarousel({
-    items : 4,
-    lazyLoad : true,
-    autoPlay : true,
-    navigation : true,
-    pagination : false
-    });     
-    });   
-  </script>
-<!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
 
-<body class="size-960">
-	<div class="customBorder">
-		<fieldset class="box">
-			<h1>Login</h1>
-			<form action="login.php" method="post" class="customform">
-				<div>
-					Email:<input type="text" name="Email"
-						value="<?php echo htmlentities($submitted_email, ENT_QUOTES, 'UTF-8'); ?>" />
-				</div>
-				<div>
-					Password:<input type="password" name="password" value="" />
-				</div>
-				<div>
-					<button type="submit">Login</button>
-				</div>
-				<div class="loginError">
-				<?php echo htmlentities($login_error, ENT_QUOTES, 'UTF-8'); ?></div>
-				<div style="display: inline">
-					<input type="checkbox" name="Remember" value="Remember">Remember me
-					<a href="register.php" style="float:right">Sign up</a>
-				</div>
-			</form>
-		</fieldset>
-	</div>
-</body>
+

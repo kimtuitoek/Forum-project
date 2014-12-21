@@ -9,6 +9,7 @@
 // First we execute our common code to connection to the database and start the session
 require ("common.php");
 require ("validation.php");
+require ("viewServer.php");
 
 // This if statement checks to determine whether the registration form has been submitted
 // If it has, then the registration code is run, otherwise the form is displayed
@@ -27,11 +28,9 @@ if (! empty ( $_POST )) {
 	// we execute the query.
 	
 	$query = "
-				SELECT
-					1
-				FROM User
-				WHERE
-					Username = :username
+				SELECT	1
+				FROM	User
+				WHERE	Username = :username
 			";
 	
 	$query_params = array (
@@ -58,11 +57,9 @@ if (! empty ( $_POST )) {
 	// to ensure that it is unique.
 	
 	$query = " 
-				SELECT 
-					1 
-				FROM User 
-				WHERE 
-					Email = :email 
+				SELECT	1 
+				FROM	User 
+				WHERE	Email = :email 
 			";
 	
 	$query_params = array (
@@ -151,107 +148,15 @@ if (! empty ( $_POST )) {
 		// will be sent to the user if you do not die or exit.
 		die ( "Redirecting to login.php" );
 	}
-}
+}	
+	
+$view = new viewServer();
+	
+$view->first_name = $first_name;
+$view->last_name = $last_name;
+$view->email = $email;
+$view->username = $username;
+$view->url = $_SESSION ['previous_page'];
 
-?>
-
-<head>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script>
-	$(function() {
-   $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true,
-      yearRange: "1920:2014",
-    });
-   $( "#datepicker" ).datepicker( "option", "showAnim", "show" );
-  });
-  	</script>
-</head>
-<!--Header-->
-<?php
-
-$_SESSION ['title'] = "Sign Up";
-include_once ("templates/header.php");
-$error = $_SESSION ['error'];
-
-?>
-<!-- HOME PAGE BLOCK -->
-<div class="line">
-	<div class="s-18 l-12">
-		<h1>Sign up</h1>
-		<div class="box">
-			<form name="signup" action="register.php" method="post"
-				class="customform s-18 l-8">
-				<span class="signupError">
-				<?php if (isset($error['message'])) {echo $error['message'];} ?></span>
-
-				<div class="s-9">
-					<span class="signupError">
-					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-					First Name<span class="signupError">
-				<?php if (isset($error['names'])) {echo $error['names'];} ?></span>
-					<input type="text" name="first_name" value="<?php echo $first_name; ?>" />
-				</div>
-
-				<div class="s-9">
-					<span class="signupError">
-					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-					Last Name<span class="signupError">
-					<?php if (isset($error['names'])) {echo $error['names'];} ?></span>
-					<input type="text" name="last_name" value="<?php echo $last_name; ?>" />
-				</div>
-
-				<div class="s-9">
-					<span class="signupError">
-					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-					Email<span class="signupError">
-					<?php if (isset($error['email'])) {echo $error['email'];} ?></span>
-					<input type="text" name="email" value="<?php echo $email; ?>" />
-				</div>
-
-				<div class="s-9">
-					<span class="signupError">
-					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-					Password<span class="signupError">
-					<?php if (isset($error['password'])) {echo $error['password'];} ?></span>
-					<input type="password" name="password" value="" />
-				</div>
-
-				<div class="s-9">
-					Confirm Password<span class="signupError">
-					<?php if (isset($error['confirm_password'])) {echo $error['confirm_password'];} ?></span>
-					<input type="password" name="confirm_password" value="" />
-				</div>
-
-				<div class="s-9">
-					<span class="signupError">
-					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-					Username<span class="signupError">
-					<?php if (isset($error['username'])) {echo $error['username'];} ?></span>
-					<input type="text" name="username" value="<?php echo $username; ?>" />
-				</div>
-
-				<br />
-				<div class="s-9">
-					<input type="checkbox" name="Terms" value="checked"> I have read
-					and accept the Terms and Conditions <span class="signupError">
-					<?php if (isset($error['icon2'])) {echo $error['icon2'];} ?></span>
-				</div>
-				<div class="s-9">
-					<button type="submit">Sign up</button>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<br />
-
-<!--Footer-->
-<?php
-include_once ("templates/footer.php");
+$view->render("register.phtml");
 ?>

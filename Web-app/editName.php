@@ -2,11 +2,12 @@
 
 // First we execute our common code to connection to the database and start the session
 require ("common.php");
+require ("viewServer.php");
 
 // <!--Header-->
 $_SESSION ['title'] = "Edit names";
 
-include_once ("templates/header.php");
+include_once ("templates/header.phtml");
 
 // Enable or disable mature content
 if (! empty ( $_POST )) {
@@ -38,33 +39,8 @@ if (! empty ( $_POST )) {
 	die ( "Redirecting to: settings.php" );
 }
 
-?>
+$view = new viewServer();
 
-<!-- ASIDE NAV AND CONTENT -->
-<div class="line">
-	<div class="box margin-bottom">
-		<div class="margin">
-			<article class="customform s-12 l-8">
-				<h1>Change Name</h1>
-				<form method="post">
-					First Name<input type="text" name="First_name"
-						value="<?php echo $_SESSION['user']['First_name']?>" /> Last Name<input
-						type="text" name="Last_name"
-						value="<?php echo $_SESSION['user']['Last_name']?>" />
-					<button type="submit" class="s-3" style="margin-right: 30px">Save
-						changes</button>
-					<button type="button" class="s-3"
-						onClick="window.location.href='settings.php'"><b>Cancel</b></button>
-					<br />
-				</form>
-			</article>
-		</div>
-	</div>
-</div>
+$view->render("editName.phtml");
 
-
-<!-- FOOTER -->
-<?php
-include_once ("templates/footer.php");
-  
 ?>

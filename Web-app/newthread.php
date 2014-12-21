@@ -80,24 +80,7 @@ if (! empty ( $_POST ['thread_name'] ) && ! empty($_POST['thread_name'])) {
 	} catch ( PDOException $ex ) {
 		die ( "Failed to run query: " . $ex->getMessage () );
 	}
-	
-	// Update post count for the thread
-	$query4 = "	UPDATE	Thread
-				SET		Post_count = Post_count + 1
-				WHERE	Thread_id = :thread_id";
-	
-	$query_params4 = array (
-			':thread_id' => $thread ['Thread_id']
-	);
-	
-	try {
-		// Execute the query against the database
-		$stmt = $db->prepare ( $query4 );
-		$result = $stmt->execute ( $query_params4 );
-	} catch ( PDOException $ex ) {
-		die ( "Failed to run query: " . $ex->getMessage () );
-	}
-	
+		
 	header ( "Location: thread.php?id=" . $thread['Thread_id']);
 	die ( "Redirecting to: thread.php?id=" . $thread['Thread_id']);
   }

@@ -2,6 +2,7 @@
 
 // First we execute our common code to connection to the database and start the session
 require ("common.php");
+require ("viewServer.php");
 
 // This if statement checks to determine whether the login form has been submitted
 // If it has, then the login code is run, otherwise the form is displayed
@@ -64,46 +65,8 @@ if (! empty ( $_POST )) {
 	}
 }
 
-include_once ("templates/header.php");
+$view = new viewServer();
+
+$view->render("editPassword.phtml");
+
 ?>
-
-<!-- ASIDE NAV AND CONTENT -->
-<div class="line">
-	<div class="box margin-bottom">
-		<div class="margin">
-			<article class="customform s-12 l-8">
-				<h1>Change Password</h1>
-				<form action="PasswordEdit.php" method="post">
-					<div class="PasswordError"><?php if (isset($error['message'])) {echo $error['message'];} ?></div>
-
-
-					<div>
-						<span class="PasswordError"><?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
-						New Password<span class="signupError"><?php if (isset($error['password'])) {echo $error['password'];} ?></span>
-						<input type="password" name="password" value="" />
-					</div>
-
-					<div>
-						Confirm Password<span class="PasswordError"><?php if (isset($error['confirm'])) {echo $error['confirm'];} ?></span>
-						<input type="password" name="confirm_password" value="" />
-					</div>
-					<br />
-
-					<div>
-						<button type="submit" class="s-3" style="margin-right: 30px">Change</button>
-					</div>
-					<button type="button" class="s-3"
-						onClick="window.location.href='settings.php'"><b>Cancel</b></button>
-					<br />
-				</form>
-			</article>
-		</div>
-	</div>
-</div>
-
-<!-- FOOTER -->
-<?php
-
-include_once ("templates/footer.php");
-?>
-
