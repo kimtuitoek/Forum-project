@@ -8,27 +8,48 @@ require ("viewServer.php");
 // Store previoue page location
 $_SESSION ['previous_page'] = $_SERVER ['PHP_SELF'] ;
 
+
+if(isset($_GET['top_id'])){
+	$topic = $_GET['top_id'];
+} else{
+	$topic = 1;
+}
+
 // Query to select threads
 $query = "	SELECT	*,
 					t.Status as thread_status,
 					t.Post_count as Post_count
-			FROM	Thread as t JOIN User as u on t.User_id = u.User_id";
+			FROM	Thread as t JOIN User as u on t.User_id = u.User_id
+			WHERE	t.Topic_id = :topic_id";
+
+// Query to select topics
+$query2 = "	SELECT	*
+			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Parent_topic_id";
+
+$query_params = array (	':topic_id' => $topic);
 
 try {
 	// Execute the query against the database
 	$stmt = $db->prepare ( $query );
+	$stmt->execute ($query_params);
+	
+	$rows = $stmt->fetchAll ();
+	
+	$stmt = $db->prepare ( $query2 );
 	$stmt->execute ();
+	
+	$topics = $stmt->fetchAll ();
 } 
 
 catch ( PDOException $ex ) {
-	die ( "Failed to run query: " . $ex->getMessage () );
+	die ( "Failed to run query: " . $ex->getMessage () );	
 }
-
-$rows = $stmt->fetchAll ();
 
 $view = new viewServer();
 
 $view->rows = $rows;
+$view->topics = $topics;
+$view->topic = $topic;
 
 $view->render("forum.phtml");
 

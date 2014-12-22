@@ -1,25 +1,27 @@
+<!-- Recursive script to gather all -->
+
+<?php function build_navigation_dir($topic_head, $topics) {?>
+	<?php echo("<ul>") ?>
+		<?php foreach ($topics as $topic): ?>
+		<?php if (!isset($topic_head['Parent_topic_id'])) :?>
+		<?php elseif ($topic['Topic_id'] != $topic_head['Parent_topic_id']) :?>
+			<?php echo("<li><a href=".$_SERVER['PHP_SELF']."?top_id=".$topic['Topic_id']." >".$topic['Name']."</a>") ?>
+			<?php build_navigation_dir($topic, $topics); ?>
+			</li>
+		<?php endif?>
+	<?php endforeach?>
+	<?php echo("</ul>") ?>
+<?php } ?>
+
 <!-- ASIDE NAV -->
-<aside class="s-12 l-3">
+<aside class="customform s-12 l-3">
 	<h3 style="width: 200px;">Filters</h3>
 	<div class="aside-nav">
-		<ul>
-			<li><a>FolderA</a></li>
-			<li><a>FolderB</a>
-			<ul>
-				<li><a>FolderB-A</a></li>
-				<li><a>FolderB-B</a></li>
-				<li><a>FolderB-C</a>
-				<ul>
-					<li><a>FolderB-C-A</a></li>
-					<li><a>FolderB-C-B</a></li>
-					<li><a>FolderB-C-C</a></li>
-				</ul></li>
-			</ul></li>
-			<li><a>FolderC</a>
-			<ul>
-				<li><a>FolderC-A</a></li>
-				<li><a>FolderC-B</a></li>
-			</ul></li>
-		</ul>
+		<?php build_navigation_dir($this->topics[0], $this->topics); ?>
+		
 	</div>
+<?php if (!isset($_SESSION['user'])) :?>
+<?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>
+	<button  type="button" class="customform s-6" onClick="window.location.href='newTopic.php?top_id=<?php echo($this->topics[0]['Topic_id'])?>'"><b>New thread</b></button>
+<?php endif?>
 </aside>

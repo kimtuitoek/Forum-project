@@ -66,11 +66,28 @@ if (! empty ( $_GET )) {
 	} catch ( PDOException $ex ) {
 		die ( "Failed to run query: " . $ex->getMessage () );
 	}
+  
+	// Query to select topics
+	$query0 = "	SELECT	*
+			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Parent_topic_id";
+  
+	try {
+		// Execute the query against the database
+		$stmt = $db->prepare ( $query0 );
+		$stmt->execute ();
+	} catch ( PDOException $ex ) {
+		die ( "Failed to run query: " . $ex->getMessage () );
+	}
+  
+	$topics = $stmt->fetchAll ();
+  
+ 	$view->topics = $topics;
 	$view->rows = $rows;
 	$view->thread = $thread;
 
 	$view->render("thread.phtml");
 	
-}		
+}
+		
 ?>
 		

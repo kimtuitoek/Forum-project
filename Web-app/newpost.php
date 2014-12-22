@@ -15,20 +15,15 @@ if (! empty ( $_POST )) {
 				INTO Post ( Body,
 							User_id,
 							Thread_id,
-							Date,
-       						Object_id) 
+							Date) 
 							VALUES (	:Body,
 										:User_id,
 										:Thread_id,
-										NOW(),
-										:Object_id)";
-	
-	$Object_id = sha1 ( $_POST ['text_post'] . date ( "h:i:sa" ) );
+										NOW())";
 	
 	$query_params = array (
 			':Body' => $_POST ['text_post'],
 			':User_id' => $_SESSION ['user']['User_id'],
-			':Object_id' => $Object_id,
 			':Thread_id' => $_POST ['thread_id'] 
 	);
 	

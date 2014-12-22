@@ -18,17 +18,10 @@
 				<div class="margin">
 
 					<!--Add new thread-->
-					<form action="newthread.php?top_id=<?php echo($_GET['top_id']);?>" method="post"
+					<form action="newtopic.php?top_id=<?php echo($_GET['top_id']);?>" method="post"
 						class="customform s-12">
 						<div>
-							Thread Name <input type="text" name="thread_name">
-							
-							Post Body <textarea name="text_post" style=" height: 121px;"></textarea><br>
-							<!-- 
-							Type	<select name="Type">
-										<option value="Public">Public</option>
-										<option value="Private">Private</option>
-									</select>  -->
+							Topic Name <input type="text" name="topic_name">
 						</div>
 
 						<div class="s-2">

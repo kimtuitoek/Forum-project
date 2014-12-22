@@ -39,31 +39,31 @@ require ("common.php");
 	}
 	
 	if(isset($_GET['p_id'])){
-		// Try to delete the object as if it where a post
 		try {
+			// Delete the post
+			$query1 = "	DELETE
+						FROM 	Post
+						WHERE	Post_id = :post_id";
+			$query_params1 = array (
+					':post_id' => $_GET ['p_id'],
+			);
+		
+			$stmt = $db->prepare ( $query1 );
+			$result = $stmt->execute ( $query_params1 );
+			
 			// Find the thread that this post belongs to
-			$query2 = "	Select	t.Object_id as Object_id
+			$query2 = "	Select	*
 						FROM 	Thread as t, Post as p
 						WHERE	p.Post_id = :post_id
-							AND	t.Thread_id = p.Thread_id";
+								AND	t.Thread_id = p.Thread_id";
 			$query_params2 = array (
 					':post_id' => $_GET ['p_id'],
 			);
-		
+			
 			$stmt = $db->prepare ( $query2 );
 			$result = $stmt->execute ( $query_params2 );
-		
+			
 			$thread = $stmt->fetch ();
-						
-			$query3 = "	DELETE
-						FROM 	Post
-						WHERE	Post_id = :post_id";
-			$query_params3 = array (
-					':post_id' => $_GET ['p_id'],
-			);
-		
-			$stmt = $db->prepare ( $query3 );
-			$result = $stmt->execute ( $query_params3 );
 			
 			if($thread['Post_count'] == 0){
 				$_SESSION ['previous_page'] = $_SESSION ['previous_previous_page'];
