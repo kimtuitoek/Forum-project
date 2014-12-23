@@ -69,7 +69,7 @@ if (! empty ( $_GET )) {
   
 	// Query to select topics
 	$query0 = "	SELECT	*
-			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Parent_topic_id";
+			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Child_topic_id";
   
 	try {
 		// Execute the query against the database

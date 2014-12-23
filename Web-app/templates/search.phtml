@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Forum</title>
+</head>
+<body>
+
+<?php include ("header.phtml"); ?>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box">
+		<div class="margin">
+			<!-- CONTENT -->
+			<section class="s-12 l-9 right">
+				<h1>Threads</h1>
+				<div class="margin">
+					<table class="responstable">
+						<tr>
+							<th>Name</th>
+							<th>Number of posts</th>
+							<th>Views</th>
+							<th>Date of creation</th>
+							<?php if (!isset($_SESSION['user'])) :?>
+							<?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>
+								<th>Type</th>
+								<th>Owner</th>
+								<th>Options</th>
+							<?php endif ?>
+							</tr> <?php foreach ( $this->rows as $row ) {?> <tr>
+								<td><a href="thread.php?id=<?php echo($row['Thread_id'])?>">
+										<?php echo $row['Name'];?>
+										<?php if ($row['thread_status'] == 1) :?> <warning> (Locked) </warning>
+										<?php endif ?>
+								 </a></td>
+								<td> <?php echo $row['Post_count']; ?></td>
+								<td> <?php echo $row['Views']; ?> </td>
+								<td> <?php echo $row['Date']; ?> </td>
+								<?php if (!isset($_SESSION['user']['Priviledge'])) :?>
+								<?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>
+									<td> <?php echo $row['Type']; ?> </td>
+									<td> <?php echo $row['Username']; ?> </td>
+									<td><a href="delete.php?t_id=<?php echo($row['Thread_id'])?>">Delete</a><br>
+									<?php if ($row['thread_status'] == 1) :?>
+										<a href="toggleLock.php?t_id=<?php echo($row['Thread_id'])?>">Unlock</a> <br>
+									<?php else :?>
+										<a href="toggleLock.php?t_id=<?php echo($row['Thread_id'])?>">Lock</a> <br>
+									<?php endif?>
+									<a href="renameThread.php?t_id=<?php echo($row['Thread_id'])?>">Rename</a></td> 
+								<?php endif ?>
+								</tr>
+	 						 <?php  }?>
+					</table>
+					<!--New thread button-->
+					<form class="customform">
+						<button  type="button" class="customform s-9 l-2" onClick="window.location.href='newThread.php?top_id=<?php echo($this->topic)?>'"><b>New thread</b></button>
+					</form>
+				</div>
+			<br>
+			</section>
+			
+			<?php include ("navigation.phtml")?>
+			
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<?php include ("footer.phtml"); ?>
+
+</body>
+</html>

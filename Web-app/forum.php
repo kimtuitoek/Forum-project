@@ -22,11 +22,11 @@ $query = "	SELECT	*,
 			FROM	Thread as t JOIN User as u on t.User_id = u.User_id
 			WHERE	t.Topic_id = :topic_id";
 
+$query_params = array (	':topic_id' => $topic);
+
 // Query to select topics
 $query2 = "	SELECT	*
-			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Parent_topic_id";
-
-$query_params = array (	':topic_id' => $topic);
+			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Child_topic_id";
 
 try {
 	// Execute the query against the database

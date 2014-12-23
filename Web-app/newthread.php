@@ -84,7 +84,7 @@ if (! empty ( $_POST ['thread_name'] ) && ! empty($_POST['text_post'])) {
   
   // Query to select topics
   $query0 = "	SELECT	*
-			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Parent_topic_id";
+			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Child_topic_id";
   
   try {
   	// Execute the query against the database
@@ -99,6 +99,7 @@ if (! empty ( $_POST ['thread_name'] ) && ! empty($_POST['text_post'])) {
   $view = new viewServer();
   
   $view->topics = $topics;
+  $view->topic = $_GET['top_id'];
   
   $view->render("newThread.phtml");
   

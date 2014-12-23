@@ -76,6 +76,16 @@ subscript, subscript:link, subscript:visited, subscript:hover, subscript:active 
 	margin-left: 4px"
 }
 
+menuscript, menuscript:link, menuscript:visited, menuscript:hover, menuscript:active {
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 80%;
+	display:inline; 
+	color: #0099FF;
+	margin-right: 4px;
+	margin-left: 4px"
+}
+
 img {
 	height: auto;
 	width: 100%;
