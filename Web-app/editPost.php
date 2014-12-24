@@ -5,7 +5,11 @@ require ("common.php");
 require ("viewServer.php");
 
 if (! empty ( $_GET )) {
-	// Query to select threads and topics
+	// Query to select topics
+	$query0 = "	SELECT	*
+			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Child_topic_id";
+	
+	// Query to select threads
 	$query = "	SELECT	*
 				FROM	Post 
 				WHERE	Post_id = :p_id";
@@ -18,11 +22,15 @@ if (! empty ( $_GET )) {
 		// Execute the query against the database
 		$stmt = $db->prepare ( $query );
 		$result = $stmt->execute ( $query_params );
+		$post = $stmt->fetch ();
+	
+		$stmt = $db->prepare ( $query0 );
+		$stmt->execute ();
+	
+		$topics = $stmt->fetchAll ();
 	} catch ( PDOException $ex ) {
 		die ( "Failed to run query: " . $ex->getMessage () );
 	}
-	
-	$post = $stmt->fetch ();
 }
 
 if (! empty ( $_POST )) {
@@ -74,6 +82,7 @@ if (! empty ( $_POST )) {
 $view = new viewServer();
 	
 $view->post = $post;
+$view->topics = $topics;
 
 $view->render("editPost.phtml");
 ?>

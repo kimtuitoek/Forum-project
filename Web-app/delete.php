@@ -38,6 +38,22 @@ require ("common.php");
 		}
 	}
 	
+	if (isset($_GET['top_id'])){
+		// Try to delete the object as if it where a thread
+		try {
+			$query = "	DELETE
+						FROM	Topic
+						WHERE	Topic_id = :topic_id";
+			$query_params = array (
+					':topic_id' => $_GET ['top_id'],
+			);
+	
+			$stmt = $db->prepare ( $query );
+			$result = $stmt->execute ( $query_params );
+		} catch (Exception $e) {
+		}
+	}
+	
 	if(isset($_GET['p_id'])){
 		try {
 			// Delete the post

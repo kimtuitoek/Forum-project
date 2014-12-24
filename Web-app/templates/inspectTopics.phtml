@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inspect Topics</title>
+</head>
+<body>
+
+<?php include ("header.phtml"); ?>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box">
+		<div class="margin">
+			<!-- CONTENT -->
+			<section class="s-12 l-12 ">
+				<h1>Topics</h1>
+				<div class="margin">
+					<table class="responstable">
+						<tr>
+							<th>Topic ID</th>
+							<th>Name</th>
+							<th>Creators Users ID</th>
+							<th>Parent Topic ID</th>
+							<th>Tools</th></tr>
+							 <?php foreach ( $this->topics as $topic ) :?> 
+							 	<?php if($topic['Topic_id'] != 1) :?>
+							 		<tr>
+										<td><a> <?php echo $topic['Topic_id'];?> </a></td>
+										<td><a> <?php echo $topic['Name'];?> </a></td>
+										<td><a> <?php echo $topic['Creator_id'];?> </a></td>
+										<td><a> <?php echo $topic['Parent_topic_id'];?> </a></td>
+										<td>
+											<a href="delete.php?top_id=<?php echo($topic['Topic_id'])?>">delete</a> 
+										</td>
+									</tr>
+								<?php endif ?>
+	 						 <?php endforeach ?>
+					</table>
+
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<?php include ("footer.phtml"); ?>
+
+</body>
+</html>

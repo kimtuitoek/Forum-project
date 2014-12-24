@@ -32,8 +32,24 @@ if (! empty ( $_POST )) {
 header ( "Location: " . $_SESSION ['previous_page'] );
 die ( "Redirecting to: " . $_SESSION ['previous_page'] );
 }
+
+// Query to select topics
+$query0 = "	SELECT	*
+			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Child_topic_id";
+	
+try {
+	// Execute the query against the database$stmt = $db->prepare ( $query0 );
+	$stmt = $db->prepare ( $query0 );
+	$stmt->execute ();
+
+	$topics = $stmt->fetchAll ();
+} catch ( PDOException $ex ) {
+	die ( "Failed to run query: " . $ex->getMessage () );
+}
 	
 $view = new viewServer();
 	
+$view->topics = $topics;
+
 $view->render("renameThread.phtml");
 ?>
