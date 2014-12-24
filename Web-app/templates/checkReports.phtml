@@ -25,7 +25,7 @@
 							 <?php foreach ( $this->reports as $report ) :?> <tr>
 								<td><a href="manageReport.php?r_id=<?php echo($report['Report_id'])?>"> <?php echo $report['Report_id'];?> 
 								</a></td>
-								<?php if (isset($report['Post_id'])) :?>								
+								<?php if ($report['Post_id'] != 0) :?>								
 								<td> Post </td>
 								<?php else : ?>					
 								<td> Thread </td>						
