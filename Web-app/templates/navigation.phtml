@@ -15,7 +15,7 @@
 
 <!-- ASIDE NAV -->
 <aside class="customform s-12 l-3">
-	<h3 style="width: 200px;">Filters</h3>
+	<h3 style="width: 200px;">Topics</h3>
 	<div class="aside-nav">
 		<?php build_navigation_dir($this->topics[0], $this->topics); ?>
 		
@@ -23,6 +23,6 @@
 <?php if (!isset($_SESSION['user'])) :?>
 <?php elseif (strcmp($_SERVER ['PHP_SELF'], "/forum.php")) :?>
 <?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>
-	<button  type="button" class="customform s-6" onClick="window.location.href='newTopic.php?top_id=<?php echo($this->topic)?>'"><b>New thread</b></button>
+	<button  type="button" class="customform s-6" onClick="window.location.href='newTopic.php?top_id=<?php echo($this->topic)?>'"><b>New topic</b></button>
 <?php endif?>
 </aside>

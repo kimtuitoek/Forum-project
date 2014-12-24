@@ -8,7 +8,7 @@ if(!isset($_GET['top_id']))	{}	// Something for dickbags that try to play with t
 
 // Query to select topics
 $query0 = "	SELECT	*
-			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Parent_topic_id";
+			FROM	Topic LEFT JOIN Topic_relation on Topic_id = Child_topic_id";
 
 try {
 	// Execute the query against the database
@@ -78,6 +78,7 @@ if (! empty ( $_POST ['topic_name'] )) {
   $view = new viewServer();
   
   $view->topics = $topics;
+  $view->topic = $_GET['top_id'];
   
   $view->render("newTopic.phtml");
   

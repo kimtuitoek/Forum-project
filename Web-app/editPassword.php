@@ -60,8 +60,8 @@ if (! empty ( $_POST )) {
 		}
 		$_SESSION ['user'] ['Password'] = $password;
 		
-		header ( "Location: settings.php" );
-		die ( "Redirecting to: settings.php" );
+		header ( "Location: userSettings.php" );
+		die ( "Redirecting to: userSettings.php" );
 	}
 }
 

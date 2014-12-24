@@ -14,7 +14,9 @@ if (! empty ( $_POST )) {
 	$FirstName = $_POST ['First_name'];
 	$LastName = $_POST ['Last_name'];
 	$i_Email = $_SESSION ['user'] ['Email'];
-	$query = "UPDATE User SET First_name = '$FirstName', Last_name = '$LastName' WHERE Email = :Email";
+	$query = "	UPDATE	User 
+				SET		First_name = '$FirstName', Last_name = '$LastName' 
+				WHERE	Email = :Email";
 	
 	$query_params = array (
 			':Email' => $_SESSION ['user'] ['Email'] 
@@ -33,8 +35,8 @@ if (! empty ( $_POST )) {
 	$_SESSION ['user'] ['First_name'] = $FirstName;
 	$_SESSION ['user'] ['Last_name'] = $LastName;
 	
-	header ( "Location: settings.php" );
-	die ( "Redirecting to: settings.php" );
+	header ( "Location: userSettings.php" );
+	die ( "Redirecting to: userSettings.php" );
 }
 
 $view = new viewServer();
