@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>User Management</title>
+</head>
+<body>
+
+<?php include ("header.phtml");?>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box">
+		<div class="margin">
+			<!-- CONTENT -->
+			<section class="s-12 l-9 right">
+				<article class="customform">
+				<!--Edit old post-->
+				<form action="manageUser.php" method="post">
+					<text style="font-size: 120%;">Set User Priviledge Level:</text>
+					<div>
+					<input type="hidden" name="user_id" value="<?php echo $_GET['u_id'];?>">
+					<input type="radio" name="status" value="0"  <?php if ($this->user['Status'] == 0) :?>checked="checked"<?php endif?>><text style="color:green">In Good Standing</text>
+					<br>
+					<input type="radio" name="status" value="1" <?php if ($this->user['Status'] == 1) :?>checked="checked"<?php endif?>><warning>Banned</warning>
+					<br>
+					<?php if ($_SESSION['user']['Priviledge'] == 2) :?>
+						<text style="font-size: 120%;">Set User Priviledge Level:</text>
+						<div>
+						<input type="hidden" name="user_id" value="<?php echo $_GET['u_id'];?>">
+						<input type="radio" name="priviledge" value="0" <?php if ($this->user['Priviledge'] == 0) :?>checked="checked"<?php endif?>><text style="color:green">General</text>
+						<br>
+						<input type="radio" name="priviledge" value="1" <?php if ($this->user['Priviledge'] == 1) :?>checked="checked"<?php endif?>><text style="color:orange">Moderator</text>
+						<br>
+						<input type="radio" name="priviledge" value="2" <?php if ($this->user['Priviledge'] == 2) :?>checked="checked"<?php endif?>><warning>Administrator</warning>
+						</div>
+					<?php endif?>
+					<div style="display: inline">
+						<button class="s-3" type="submit" style="margin-right: 30px">Set</button>
+						<button class="s-3" type="button" onclick="history.go(-1)"><b>Cancel</b></button>
+					</div>
+				</form>
+				</article>
+			</section>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<?php include ("footer.phtml"); ?>
+
+</body>
+</html>

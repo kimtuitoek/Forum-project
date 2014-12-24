@@ -1,0 +1,28 @@
+<!-- Recursive script to gather all -->
+
+<?php function build_navigation_dir($topic_head, $topics) {?>
+	<?php echo("<ul>") ?>
+		<?php foreach ($topics as $topic): ?>
+		<?php if (!isset($topic['Parent_topic_id'])) :?>
+		<?php elseif ($topic_head['Topic_id'] == $topic['Parent_topic_id']) :?>
+			<?php echo("<li><a>".$topic['Name']."</br><menuscript onClick=\"window.location.href='".$_SERVER['PHP_SELF']."?top_id=".$topic['Topic_id']."'\" > Open</menuscript></a> ") ?> <?php echo("")?>
+			<?php build_navigation_dir($topic, $topics); ?>
+			</li>
+		<?php endif?>
+	<?php endforeach?>
+	<?php echo("</ul>") ?>
+<?php } ?>
+
+<!-- ASIDE NAV -->
+<aside class="customform s-12 l-3">
+	<h3 style="width: 200px;">Topics</h3>
+	<div class="aside-nav">
+		<?php build_navigation_dir($this->topics[0], $this->topics); ?>
+		
+	</div>
+<?php if (!isset($_SESSION['user'])) :?>
+<?php elseif (strcmp($_SERVER ['PHP_SELF'], "/forum.php")) :?>
+<?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>
+	<button  type="button" class="customform s-6" onClick="window.location.href='newTopic.php?top_id=<?php echo($this->topic)?>'"><b>New topic</b></button>
+<?php endif?>
+</aside>

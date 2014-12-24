@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Rename Thread</title>
+</head>
+<body>
+
+<?php include ("header.phtml");?>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box margin-bottom">
+		<div class="margin">
+			<!-- CONTENT -->
+			<section class="s-12 l-9 right">
+				<article class="customform">
+				<!--Edit old post-->
+				<form action="editPost.php" method="post">
+					<p>Edit Post:</p>
+					<div>
+					<input type="hidden" name="old_body" value="<?php echo $this->post['Body'];?>">
+					<input type="hidden" name="p_id" value="<?php echo $this->post['Post_id'];?>">
+					<textarea name="text_post" style=" height: 121px;"><?php echo $this->post['Body'];?></textarea>
+					</div>
+					<div style="display: inline">
+						<button class="s-3" type="submit" style="margin-right: 30px">Post</button>
+						<button class="s-3" type="button" onclick="history.go(-1)"><b>Cancel</b></button>
+					</div>
+				</form>
+				</article>
+			</section>
+			<?php include ("navigation.phtml")?>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<?php include ("footer.phtml"); ?>
+
+</body>
+</html>

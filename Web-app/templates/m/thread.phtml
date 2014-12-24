@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Forum</title>
+</head>
+<body>
+
+<?php include ("header.phtml");?>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box">
+		<div class="margin">
+			<!-- CONTENT -->
+			<section class="s-12 l-9 right">
+					<h1><?php echo($this->thread['Name'])?></h1>
+					<?php foreach ($this->rows as $row) :?>
+					<table class="responstable">
+						<tr> <th>Posted by <?php echo($row['Username']);?> </th> </tr>
+						<tr> <td style="height:100px;"><?php echo($row['Body'] ."\t"); ?> </td> </tr>
+						<tr>
+							<td>
+								<text style="font-size: 75%"> Posted on: <?php echo($row['Date']);?> </text>
+								<?php if (!isset($_SESSION['user']['Priviledge'])) : ?>
+								<?php elseif ($row['User_id'] == $_SESSION ['user']['User_id'] and $_SESSION ['user']['Priviledge'] <> '0') :?>
+									<subscript onClick='window.location.href="editPost.php?p_id=<?php echo($row['Post_id']);?>"'>Edit</subscript>
+									<subscript>  -  </subscript>
+									<subscript onClick='window.location.href="delete.php?p_id=<?php echo($row['Post_id']);?>"'>Delete</subscript>
+								<?php elseif ($row['User_id'] <> $_SESSION ['user']['User_id'] and $_SESSION ['user']['Priviledge'] <> '0') :?>
+									<subscript onClick='window.location.href="editPost.php?p_id=<?php echo($row['Post_id']);?>"'>Edit</subscript>
+									<subscript>  -  </subscript>
+									<subscript onClick='window.location.href="delete.php?p_id=<?php echo($row['Post_id']);?>"'>Delete</subscript>
+									<subscript>  -  </subscript>
+									<subscript onClick='window.location.href="newReport.php?obj=<?php echo($row['Object_id']);?>"'>Report</subscript>
+								<?php elseif ($row['User_id'] == $_SESSION ['user']['User_id'] and $thread_info['Status'] !== '1') : ?>
+									<subscript	href="editPost.php?p_id=<?php echo($row['Post_id']);?>">Edit</subscript>
+								<?php elseif ($row['User_id'] <> $_SESSION ['user']['User_id'] and $thread_info['Status'] !== '1') :?>
+									<subscript	onClick='window.location.href="newReport.php?obj=<?php echo($row['Object_id']);?>"'>Report</subscript>
+								<?php endif?>
+							</td>
+						</tr>
+					</table><br/>
+					<?php endforeach;?>
+					<?php if (!isset($_SESSION['user']['Priviledge'])) : ?>
+					<?php elseif ($this->thread['User_id'] <> $_SESSION ['user']['User_id'] and $_SESSION['user']['Priviledge'] >= 1) :?>
+						<subscript	onClick='window.location.href="newReport.php?obj=<?php echo($this->thread['Object_id']);?>"'>Report Thread</subscript>
+						<subscript>  -  </subscript>
+					<?php elseif ($this->thread['User_id'] <> $_SESSION ['user']['User_id'] and $thread_info['Status'] !== '1') :?>
+						<subscript	onClick='window.location.href="newReport.php?obj=<?php echo($this->thread['Object_id']);?>"'>Report Thread</subscript>
+					<?php endif ?>
+					<?php if (!isset($_SESSION['user']['Priviledge'])) :?>
+					<?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>
+						<subscript onClick='window.location.href="delete.php?bt_id=<?php echo($this->thread['Thread_id'])?>"'>Delete</subscript>
+						<?php if ($this->thread['Status'] == 1) :?>
+							<subscript>  -  </subscript>
+							<subscript onClick='window.location.href="toggleLock.php?t_id=<?php echo($this->thread['Thread_id'])?>"'>Unlock</subscript>
+						<?php else :?>
+							<subscript>  -  </subscript>
+							<subscript onClick='window.location.href="toggleLock.php?t_id=<?php echo($this->thread['Thread_id'])?>"'>Lock</subscript> 
+						<?php endif?>
+						<subscript>  -  </subscript>
+						<subscript onClick='window.location.href="renameThread.php?t_id=<?php echo($this->thread['Thread_id'])?>"'>Rename</subscript> 
+					<?php endif ?>
+					<br />
+					<br /> 
+					<!-- Only show option to post if thread is not locked. Else show locked text.-->
+					<?php if ($this->thread['Status'] !== '1') :?>
+				
+					<!--Add new post-->
+					<form action="newPost.php?id=<?php echo($_GET['id']);?>" method="post" class="customform s-12 l-12">
+           				<p>New Post:</p>
+           				<textarea name="text_post"style=" height: 121px;"></textarea>
+           				<input type="hidden" name="thread_id" value="<?php echo($_GET['id']);?>">
+           				<div class="s-9 l-2" ><button type="submit">Post</button></div>
+           			</form>
+	
+					<!-- Else show thread locked -->
+					<?php else :?>
+					<form method="post" class="customform s-12">
+						<button class="customform s-2" type="submit">Thread Locked</button>
+					</form>
+					<?php endif?>
+			</section>
+			<?php include ("navigation.phtml")?>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<?php include ("footer.phtml"); ?>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>New Thread</title>
+</head>
+<body>
+
+<?php include ("header.phtml");?>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box">
+		<div class="margin">
+			<!-- CONTENT -->
+			<section class="s-12 l-9 right">
+				<h1>New thread</h1>
+				<div class="margin">
+
+					<!--Add new thread-->
+					<form action="newthread.php?top_id=<?php echo($_GET['top_id']);?>" method="post"
+						class="customform s-12">
+						<div>
+							Thread Name <input type="text" name="thread_name">
+							
+							Post Body <textarea name="text_post" style=" height: 121px;"></textarea><br>
+							<!-- 
+							Type	<select name="Type">
+										<option value="Public">Public</option>
+										<option value="Private">Private</option>
+									</select>  -->
+						</div>
+
+						<div class="s-2">
+							<button type="submit">Create</button>
+						</div>
+					</form>
+
+				</div>
+			</section>
+						
+			<!-- ASIDE NAV -->
+			<?php include("navigation.phtml")?>
+		</div>
+	</div>
+</div>
+
+<?php include("footer.phtml")?>

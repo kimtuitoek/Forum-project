@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Forum</title>
+</head>
+<body>
+
+<?php include ("header.phtml"); ?>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box margin-bottom">
+		<div class="margin">
+			<!-- CONTENT -->
+			<article class="customform">
+				<h1>Administration Tools</h1>
+				<button type="button" class="s-2" onClick="window.location.href='checkReports.php'" style="margin-right: 30px"><b> Check Reports </b></button> 
+				<button type="button" class="s-2" onClick="window.location.href='deleteTopics.php'" style="margin-right: 30px"><b> Delete Topics </b></button> 
+				<button type="button" class="s-2" onClick="window.location.href='manageUsers.php'" style="margin-right: 30px"><b> Manage Users </b></button>
+			</article>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<?php include ("footer.phtml"); ?>
+
+</body>
+</html>

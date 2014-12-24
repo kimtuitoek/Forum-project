@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type"	content="text/html"; charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width" />
+<title>Responsive Business template</title>
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsee.css">
+<link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="owl-carousel/owl.theme.css">
+<link href="css/custom.css" rel="stylesheet">
+
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src="js/modernizr.js"></script>
+<script type="text/javascript" src="js/responsee.js"></script>
+<script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {     
+    $("#owl-demo").owlCarousel({     
+    navigation : true,
+    slideSpeed : 300,
+    paginationSpeed : 400,
+    autoPlay : true,
+    singleItem:true
+    });
+    });  
+    
+    $(document).ready(function() {     
+    $("#owl-demo2").owlCarousel({
+    items : 4,
+    lazyLoad : true,
+    autoPlay : true,
+    navigation : true,
+    pagination : false
+    });     
+    });   
+  </script>
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body class="size-960">
+	<div class="customBorder">
+		<fieldset class="box">
+			<h1>Sign up</h1>
+			<form name="signup" action="register.php" method="post" class="customform">
+				<span class="signupError">
+				<?php if (isset($error['message'])) {echo $error['message'];} ?></span>
+
+				<div>
+					<span class="signupError">
+					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
+					First Name<span class="signupError">
+				<?php if (isset($error['names'])) {echo $error['names'];} ?></span>
+					<input type="text" name="first_name" value="<?php echo $this->first_name; ?>" />
+				</div>
+
+				<div>
+					<span class="signupError">
+					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
+					Last Name<span class="signupError">
+					<?php if (isset($error['names'])) {echo $error['names'];} ?></span>
+					<input type="text" name="last_name" value="<?php echo $this->last_name; ?>" />
+				</div>
+
+				<div>
+					<span class="signupError">
+					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
+					Email<span class="signupError">
+					<?php if (isset($error['email'])) {echo $error['email'];} ?></span>
+					<input type="text" name="email" value="<?php echo $this->email; ?>" />
+				</div>
+
+				<div>
+					<span class="signupError">
+					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
+					Password<span class="signupError">
+					<?php if (isset($error['password'])) {echo $error['password'];} ?></span>
+					<input type="password" name="password" value="" />
+				</div>
+
+				<div>
+					Confirm Password<span class="signupError">
+					<?php if (isset($error['confirm_password'])) {echo $error['confirm_password'];} ?></span>
+					<input type="password" name="confirm_password" value="" />
+				</div>
+
+				<div>
+					<span class="signupError">
+					<?php if (isset($error['icon'])) {echo $error['icon'];} ?></span>
+					Username<span class="signupError">
+					<?php if (isset($error['username'])) {echo $error['username'];} ?></span>
+					<input type="text" name="username" value="<?php echo $this->username; ?>" />
+				</div>
+
+				<br />
+				<div>
+					<input type="checkbox" name="Terms" value="checked"> <text style="font-size: 80%">I have read
+					and accept the Terms and Conditions </text> <span class="signupError">
+					<?php if (isset($error['icon2'])) {echo $error['icon2'];} ?></span>
+				</div>
+				<div>
+					<button class="l-5" type="submit">Sign up </button>
+					<button class="l-5" type="button" onClick="window.location.href='<?php echo$_SESSION ['previous_page']; ?>'"  style="float:right;"><b>Cancel</b></button>
+				</div>
+			</form>
+		</fieldset>
+	</div>
+</body>
+</html>

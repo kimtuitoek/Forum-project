@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Forum</title>
+</head>
+<body>
+
+<?php include ("header.phtml");?>
+
+<div class="line">
+	<div class="box margin-bottom">
+		<div class="margin">
+			<article class="customform s-12 l-8">
+				<h1>Change Name</h1>
+				<form method="post">
+					First Name<input type="text" name="First_name"
+						value="<?php echo $_SESSION['user']['First_name']?>" /> Last Name<input
+						type="text" name="Last_name"
+						value="<?php echo $_SESSION['user']['Last_name']?>" />
+					<button type="submit" class="s-3" style="margin-right: 30px">Save changes</button>
+					<button type="button" class="s-3" onClick="window.location.href='<?php echo$_SESSION ['previous_page']; ?>'"><b>Cancel</b></button>
+					<br />
+				</form>
+			</article>
+		</div>
+	</div>
+</div>
+
+<!-- FOOTER -->
+<?php include ("footer.phtml"); ?>
+
+</body>
+</html>
