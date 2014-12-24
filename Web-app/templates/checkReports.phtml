@@ -20,19 +20,21 @@
 						<tr>
 							<th>Report ID</th>
 							<th>Object Type</th>
-							<th>User ID</th>
+							<th>Reporting Users ID</th>
 							<th>Date</th></tr>
-							 <?php foreach ( $this->reports as $report ) :?> <tr>
-								<td><a href="manageReport.php?r_id=<?php echo($report['Report_id'])?>"> <?php echo $report['Report_id'];?> 
+							 <?php foreach ( $this->reports as $report ) :?> 
+							 <tr onClick="window.location.href='manageReport.php?r_id=<?php echo($report['Report_id'])?>'" style="cursor: pointer;">
+								<td><a> <?php echo $report['Report_id'];?> 
 								</a></td>
 								<?php if ($report['Post_id'] != 0) :?>								
-								<td> Post </td>
+									<td> Post </td>
 								<?php else : ?>					
-								<td> Thread </td>						
+									<td> Thread </td>						
 								<?php endif ?>
 								<td> <?php echo $report['User_id']; ?></td>
-								<td> <?php echo $report['Date']; ?> </td>
-								</tr>
+								<td> <?php echo $report['Date']; ?> 
+								</td>
+							</tr>
 	 						 <?php endforeach ?>
 					</table>
 

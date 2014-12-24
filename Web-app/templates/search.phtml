@@ -24,7 +24,6 @@
 							<th>Date of creation</th>
 							<?php if (!isset($_SESSION['user'])) :?>
 							<?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>
-								<th>Type</th>
 								<th>Owner</th>
 								<th>Options</th>
 							<?php endif ?>
@@ -39,7 +38,6 @@
 								<td> <?php echo $row['Date']; ?> </td>
 								<?php if (!isset($_SESSION['user']['Priviledge'])) :?>
 								<?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>
-									<td> <?php echo $row['Type']; ?> </td>
 									<td> <?php echo $row['Username']; ?> </td>
 									<td><a href="delete.php?t_id=<?php echo($row['Thread_id'])?>">Delete</a><br>
 									<?php if ($row['thread_status'] == 1) :?>

@@ -63,10 +63,14 @@
 			} 
 
 		} 
-		 
+
+		//If the user has been banned
+		if($row['Status'] == 1){
+			$login_error = "That account has been banned";
+		}
 		// If the user logged in successfully, then we send them to the private members-only page 
 		// Otherwise, we display a login failed message and show the login form again 
-		if($login_ok) 
+		elseif($login_ok) 
 		{ 
 			// Here I am preparing to store the $row array into the $_SESSION by 
 			// removing the salt and password values from it.  Although $_SESSION is 
@@ -82,7 +86,6 @@
 			// the user's details. 
 			$_SESSION['user'] = $row;
 
-			
 			// Redirect the user to the private members-only page. 
 			if(isset($_SESSION['previous_page']))
 			{
