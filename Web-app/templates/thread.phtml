@@ -32,11 +32,11 @@
 									<subscript>  -  </subscript>
 									<subscript onClick='window.location.href="delete.php?p_id=<?php echo($row['Post_id']);?>"'>Delete</subscript>
 									<subscript>  -  </subscript>
-									<subscript onClick='window.location.href="report.php?obj=<?php echo($row['Object_id']);?>"'>Report</subscript>
+									<subscript onClick='window.location.href="newReport.php?obj=<?php echo($row['Object_id']);?>"'>Report</subscript>
 								<?php elseif ($row['User_id'] == $_SESSION ['user']['User_id'] and $thread_info['Status'] !== '1') : ?>
 									<subscript	href="editPost.php?p_id=<?php echo($row['Post_id']);?>">Edit</subscript>
 								<?php elseif ($row['User_id'] <> $_SESSION ['user']['User_id'] and $thread_info['Status'] !== '1') :?>
-									<subscript	onClick='window.location.href="report.php?obj=<?php echo($row['Object_id']);?>"'>Report</subscript>
+									<subscript	onClick='window.location.href="newReport.php?obj=<?php echo($row['Object_id']);?>"'>Report</subscript>
 								<?php endif?>
 							</td>
 						</tr>
@@ -44,10 +44,10 @@
 					<?php endforeach;?>
 					<?php if (!isset($_SESSION['user']['Priviledge'])) : ?>
 					<?php elseif ($this->thread['User_id'] <> $_SESSION ['user']['User_id'] and $_SESSION['user']['Priviledge'] >= 1) :?>
-						<subscript	onClick='window.location.href="report.php?obj=<?php echo($this->thread['Object_id']);?>"'>Report Thread</subscript>
+						<subscript	onClick='window.location.href="newReport.php?obj=<?php echo($this->thread['Object_id']);?>"'>Report Thread</subscript>
 						<subscript>  -  </subscript>
 					<?php elseif ($this->thread['User_id'] <> $_SESSION ['user']['User_id'] and $thread_info['Status'] !== '1') :?>
-						<subscript	onClick='window.location.href="report.php?obj=<?php echo($this->thread['Object_id']);?>"'>Report Thread</subscript>
+						<subscript	onClick='window.location.href="newReport.php?obj=<?php echo($this->thread['Object_id']);?>"'>Report Thread</subscript>
 					<?php endif ?>
 					<?php if (!isset($_SESSION['user']['Priviledge'])) :?>
 					<?php elseif ($_SESSION['user']['Priviledge'] >= 1) :?>

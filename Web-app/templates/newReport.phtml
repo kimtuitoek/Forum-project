@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>New Thread</title>
+</head>
+<body>
+
+<?php include ("header.phtml");?>
+
+<!-- ASIDE NAV AND CONTENT -->
+<div class="line">
+	<div class="box">
+		<div class="margin">
+			<!-- CONTENT -->
+			<?php echo $_GET['obj']; ?>
+			<section class="s-12 l-9 right">
+				<article class="customform s-12 ">
+				<!--Edit old post-->
+				<form action="newReport.php" method="post">
+					<p>Reason for report</p>
+					<input type="hidden" name="obj_id" value="<?php echo $this->result['Object_id'];?>">
+					<?php if (isset($this->result['Post_id'])) :?>
+						<input type="hidden" name="p_id" value="<?php echo $this->result['Post_id'];?>">
+						<input type="hidden" name="t_id" value="<?php echo $this->result['PThread_id'];?>">
+					<?php else :?>
+						<input type="hidden" name="t_id" value="<?php echo $this->result['Thread_id'];?>">
+						<input type="hidden" name="p_id" value="<?php echo null?>">
+					<?php endif?>
+					<div>
+					<textarea name="Reason" style=" height: 121px;"></textarea>
+					</div>
+					<div style="display: inline">
+						<button class="s-2" type="submit" style="margin-right: 30px">Report</button>
+						<button class="s-2" type="button" onclick="history.go(-1)"><b>Cancel</b></button>
+					</div>
+				</form>
+			</article>
+			</section>
+			<!-- ASIDE NAV -->
+			<?php include("navigation.phtml")?>
+		</div>
+	</div>
+</div>
+
+<?php include("footer.phtml")?>
