@@ -13,3 +13,10 @@ To access the test site prepared for you enter the following into you browser. Y
 This should automatically forward you to the index of our site. If not you may attempt.
 
 75.155.72.50:8080/index.php
+
+For our test server you can use the credentials
+
+user:thewafflehouse@gmail.com
+pass:neo
+
+for admin access
