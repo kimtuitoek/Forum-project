@@ -18,30 +18,26 @@ USE `cpsc471project`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Action`
+-- Table structure for table `Object`
 --
 
-DROP TABLE IF EXISTS `Action`;
+DROP TABLE IF EXISTS `Object`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Action` (
-  `Action_id` int(11) NOT NULL AUTO_INCREMENT,
-  `Report_id` int(11) NOT NULL,
-  `Moderator_id` int(11) NOT NULL,
-  `Comment` varchar(45) NOT NULL,
-  `Date` datetime DEFAULT NULL,
-  `Recipient` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Action_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `Object` (
+  `Object_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`Object_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Action`
+-- Dumping data for table `Object`
 --
 
-LOCK TABLES `Action` WRITE;
-/*!40000 ALTER TABLE `Action` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Action` ENABLE KEYS */;
+LOCK TABLES `Object` WRITE;
+/*!40000 ALTER TABLE `Object` DISABLE KEYS */;
+INSERT INTO `Object` VALUES (1),(21),(22),(23),(24),(25),(26),(27),(28),(29),(30),(31),(32),(33),(34),(35),(36),(37),(38),(39),(40),(41),(42),(43),(44),(45),(46),(47),(48),(49),(50),(51),(52),(53),(54),(55),(56),(57),(58),(59),(60),(61),(62),(63),(64),(65),(66),(67),(68),(69),(70),(71),(72),(73);
+/*!40000 ALTER TABLE `Object` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-17 15:50:15
+-- Dump completed on 2014-12-24 20:02:46

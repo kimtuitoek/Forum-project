@@ -18,31 +18,31 @@ USE `cpsc471project`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Report`
+-- Table structure for table `History`
 --
 
-DROP TABLE IF EXISTS `Report`;
+DROP TABLE IF EXISTS `History`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Report` (
-  `Report_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `History` (
+  `History_id` int(11) NOT NULL,
   `User_id` int(11) NOT NULL,
-  `Reason` varchar(45) NOT NULL,
-  `Moderator_id` int(11) DEFAULT NULL,
-  `Object_id` int(11) DEFAULT NULL,
-  `Resolved` varchar(45) DEFAULT 'Unresolved',
-  `Date` datetime DEFAULT NULL,
-  PRIMARY KEY (`Report_id`)
+  `Body` text NOT NULL,
+  `Date` datetime NOT NULL,
+  `Post_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`History_id`),
+  KEY `Post_id_History` (`Post_id`),
+  CONSTRAINT `Post_id_History` FOREIGN KEY (`Post_id`) REFERENCES `Post` (`Post_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Report`
+-- Dumping data for table `History`
 --
 
-LOCK TABLES `Report` WRITE;
-/*!40000 ALTER TABLE `Report` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Report` ENABLE KEYS */;
+LOCK TABLES `History` WRITE;
+/*!40000 ALTER TABLE `History` DISABLE KEYS */;
+/*!40000 ALTER TABLE `History` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-17 15:50:22
+-- Dump completed on 2014-12-24 20:03:01
