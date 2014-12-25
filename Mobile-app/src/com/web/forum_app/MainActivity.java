@@ -17,7 +17,7 @@ public class MainActivity extends ActionBarActivity {
 		WebView webview = new WebView(this);
 		setContentView(webview);
 		
-		webview.loadUrl("75.155.70.52");
+		webview.loadUrl("75.155.70.52:8080");
 
 		/*
 		JSONObject jsonobject;
